@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06EF65596E6BB2DE91B62D67 /* Pods_ArtReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E00FD22E0BD0B17C8E7496 /* Pods_ArtReader.framework */; };
 		28FCF8202A58D309008926EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FCF81F2A58D309008926EC /* AppDelegate.swift */; };
 		28FCF8222A58D309008926EC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FCF8212A58D309008926EC /* SceneDelegate.swift */; };
 		28FCF8242A58D309008926EC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FCF8232A58D309008926EC /* ViewController.swift */; };
@@ -16,6 +17,8 @@
 		28FCF8372A58D30A008926EC /* ArtReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FCF8362A58D30A008926EC /* ArtReaderTests.swift */; };
 		28FCF8412A58D30A008926EC /* ArtReaderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FCF8402A58D30A008926EC /* ArtReaderUITests.swift */; };
 		28FCF8432A58D30A008926EC /* ArtReaderUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FCF8422A58D30A008926EC /* ArtReaderUITestsLaunchTests.swift */; };
+		2E1EE72063E9208108A05B66 /* Pods_ArtReader_ArtReaderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5BA35063646E1CF63337975 /* Pods_ArtReader_ArtReaderUITests.framework */; };
+		66D92F50469F74D2F70ACF8E /* Pods_ArtReaderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8002DF44A26F19A5F11A15F8 /* Pods_ArtReaderTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E52D05A0D06B5DAC2B7974F /* Pods-ArtReaderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtReaderTests.debug.xcconfig"; path = "Target Support Files/Pods-ArtReaderTests/Pods-ArtReaderTests.debug.xcconfig"; sourceTree = "<group>"; };
 		28FCF81C2A58D309008926EC /* ArtReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28FCF81F2A58D309008926EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28FCF8212A58D309008926EC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +53,14 @@
 		28FCF83C2A58D30A008926EC /* ArtReaderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArtReaderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		28FCF8402A58D30A008926EC /* ArtReaderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtReaderUITests.swift; sourceTree = "<group>"; };
 		28FCF8422A58D30A008926EC /* ArtReaderUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtReaderUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		403DD2B502355A195CA2A3D8 /* Pods-ArtReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtReader.debug.xcconfig"; path = "Target Support Files/Pods-ArtReader/Pods-ArtReader.debug.xcconfig"; sourceTree = "<group>"; };
+		8002DF44A26F19A5F11A15F8 /* Pods_ArtReaderTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArtReaderTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A383AA07A60D2A5F2EB0F4FF /* Pods-ArtReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtReader.release.xcconfig"; path = "Target Support Files/Pods-ArtReader/Pods-ArtReader.release.xcconfig"; sourceTree = "<group>"; };
+		A5E00FD22E0BD0B17C8E7496 /* Pods_ArtReader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArtReader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5BA35063646E1CF63337975 /* Pods_ArtReader_ArtReaderUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArtReader_ArtReaderUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBAA7446E8CBB540A7326554 /* Pods-ArtReader-ArtReaderUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtReader-ArtReaderUITests.debug.xcconfig"; path = "Target Support Files/Pods-ArtReader-ArtReaderUITests/Pods-ArtReader-ArtReaderUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E6DFABC4194741AA5678E03D /* Pods-ArtReaderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtReaderTests.release.xcconfig"; path = "Target Support Files/Pods-ArtReaderTests/Pods-ArtReaderTests.release.xcconfig"; sourceTree = "<group>"; };
+		F877E566C7C5A84B958939C0 /* Pods-ArtReader-ArtReaderUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtReader-ArtReaderUITests.release.xcconfig"; path = "Target Support Files/Pods-ArtReader-ArtReaderUITests/Pods-ArtReader-ArtReaderUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06EF65596E6BB2DE91B62D67 /* Pods_ArtReader.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66D92F50469F74D2F70ACF8E /* Pods_ArtReaderTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E1EE72063E9208108A05B66 /* Pods_ArtReader_ArtReaderUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +98,8 @@
 				28FCF8352A58D30A008926EC /* ArtReaderTests */,
 				28FCF83F2A58D30A008926EC /* ArtReaderUITests */,
 				28FCF81D2A58D309008926EC /* Products */,
+				EC7AE06C4F1205C6BFCF71C0 /* Pods */,
+				AA3E6906B6CAD65ED5B5419C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -127,6 +144,30 @@
 			path = ArtReaderUITests;
 			sourceTree = "<group>";
 		};
+		AA3E6906B6CAD65ED5B5419C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A5E00FD22E0BD0B17C8E7496 /* Pods_ArtReader.framework */,
+				D5BA35063646E1CF63337975 /* Pods_ArtReader_ArtReaderUITests.framework */,
+				8002DF44A26F19A5F11A15F8 /* Pods_ArtReaderTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EC7AE06C4F1205C6BFCF71C0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				403DD2B502355A195CA2A3D8 /* Pods-ArtReader.debug.xcconfig */,
+				A383AA07A60D2A5F2EB0F4FF /* Pods-ArtReader.release.xcconfig */,
+				DBAA7446E8CBB540A7326554 /* Pods-ArtReader-ArtReaderUITests.debug.xcconfig */,
+				F877E566C7C5A84B958939C0 /* Pods-ArtReader-ArtReaderUITests.release.xcconfig */,
+				1E52D05A0D06B5DAC2B7974F /* Pods-ArtReaderTests.debug.xcconfig */,
+				E6DFABC4194741AA5678E03D /* Pods-ArtReaderTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -134,9 +175,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 28FCF8462A58D30A008926EC /* Build configuration list for PBXNativeTarget "ArtReader" */;
 			buildPhases = (
+				B5D16C93BC77CEAAA06A0EDE /* [CP] Check Pods Manifest.lock */,
 				28FCF8182A58D309008926EC /* Sources */,
 				28FCF8192A58D309008926EC /* Frameworks */,
 				28FCF81A2A58D309008926EC /* Resources */,
+				121A7BFC14AA0DCD8131007D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -151,6 +194,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 28FCF8492A58D30A008926EC /* Build configuration list for PBXNativeTarget "ArtReaderTests" */;
 			buildPhases = (
+				E16BBD742ECADDB554A416FF /* [CP] Check Pods Manifest.lock */,
 				28FCF82E2A58D30A008926EC /* Sources */,
 				28FCF82F2A58D30A008926EC /* Frameworks */,
 				28FCF8302A58D30A008926EC /* Resources */,
@@ -169,9 +213,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 28FCF84C2A58D30A008926EC /* Build configuration list for PBXNativeTarget "ArtReaderUITests" */;
 			buildPhases = (
+				7EBAD3019D1D7A4C008C144B /* [CP] Check Pods Manifest.lock */,
 				28FCF8382A58D30A008926EC /* Sources */,
 				28FCF8392A58D30A008926EC /* Frameworks */,
 				28FCF83A2A58D30A008926EC /* Resources */,
+				2B4E6D9257EAC4369014D4E3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -252,6 +298,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		121A7BFC14AA0DCD8131007D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ArtReader/Pods-ArtReader-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ArtReader/Pods-ArtReader-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ArtReader/Pods-ArtReader-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2B4E6D9257EAC4369014D4E3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ArtReader-ArtReaderUITests/Pods-ArtReader-ArtReaderUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ArtReader-ArtReaderUITests/Pods-ArtReader-ArtReaderUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ArtReader-ArtReaderUITests/Pods-ArtReader-ArtReaderUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7EBAD3019D1D7A4C008C144B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ArtReader-ArtReaderUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B5D16C93BC77CEAAA06A0EDE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ArtReader-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E16BBD742ECADDB554A416FF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ArtReaderTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		28FCF8182A58D309008926EC /* Sources */ = {
@@ -432,6 +581,7 @@
 		};
 		28FCF8472A58D30A008926EC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 403DD2B502355A195CA2A3D8 /* Pods-ArtReader.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -461,6 +611,7 @@
 		};
 		28FCF8482A58D30A008926EC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A383AA07A60D2A5F2EB0F4FF /* Pods-ArtReader.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -490,6 +641,7 @@
 		};
 		28FCF84A2A58D30A008926EC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E52D05A0D06B5DAC2B7974F /* Pods-ArtReaderTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -510,6 +662,7 @@
 		};
 		28FCF84B2A58D30A008926EC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6DFABC4194741AA5678E03D /* Pods-ArtReaderTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -530,6 +683,7 @@
 		};
 		28FCF84D2A58D30A008926EC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DBAA7446E8CBB540A7326554 /* Pods-ArtReader-ArtReaderUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -548,6 +702,7 @@
 		};
 		28FCF84E2A58D30A008926EC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F877E566C7C5A84B958939C0 /* Pods-ArtReader-ArtReaderUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
