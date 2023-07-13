@@ -20,6 +20,9 @@
 		28FCF8622A58DA0A008926EC /* 小说现代中国.epub in Resources */ = {isa = PBXBuildFile; fileRef = 28FCF8612A58D9FC008926EC /* 小说现代中国.epub */; };
 		28FCF8652A58E5BA008926EC /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FCF8642A58E5BA008926EC /* BookModel.swift */; };
 		28FCF8672A58E62F008926EC /* EBookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FCF8662A58E62F008926EC /* EBookModel.swift */; };
+		28FCF8692A604D2A008926EC /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FCF8682A604D2A008926EC /* Parser.swift */; };
+		28FCF86B2A605051008926EC /* ParserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FCF86A2A605051008926EC /* ParserData.swift */; };
+		28FCF86D2A605BB3008926EC /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FCF86C2A605BB3008926EC /* Container.swift */; };
 		2E1EE72063E9208108A05B66 /* Pods_ArtReader_ArtReaderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5BA35063646E1CF63337975 /* Pods_ArtReader_ArtReaderUITests.framework */; };
 		66D92F50469F74D2F70ACF8E /* Pods_ArtReaderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8002DF44A26F19A5F11A15F8 /* Pods_ArtReaderTests.framework */; };
 		E93FCDD32A6004D80095BEC0 /* Reader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93FCDD02A6004D80095BEC0 /* Reader.swift */; };
@@ -62,6 +65,9 @@
 		28FCF8612A58D9FC008926EC /* 小说现代中国.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "小说现代中国.epub"; sourceTree = "<group>"; };
 		28FCF8642A58E5BA008926EC /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
 		28FCF8662A58E62F008926EC /* EBookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBookModel.swift; sourceTree = "<group>"; };
+		28FCF8682A604D2A008926EC /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		28FCF86A2A605051008926EC /* ParserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserData.swift; sourceTree = "<group>"; };
+		28FCF86C2A605BB3008926EC /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		403DD2B502355A195CA2A3D8 /* Pods-ArtReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtReader.debug.xcconfig"; path = "Target Support Files/Pods-ArtReader/Pods-ArtReader.debug.xcconfig"; sourceTree = "<group>"; };
 		8002DF44A26F19A5F11A15F8 /* Pods_ArtReaderTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArtReaderTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A383AA07A60D2A5F2EB0F4FF /* Pods-ArtReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtReader.release.xcconfig"; path = "Target Support Files/Pods-ArtReader/Pods-ArtReader.release.xcconfig"; sourceTree = "<group>"; };
@@ -199,7 +205,10 @@
 		E93FCDD12A6004D80095BEC0 /* Parser */ = {
 			isa = PBXGroup;
 			children = (
+				28FCF8682A604D2A008926EC /* Parser.swift */,
 				E93FCDD22A6004D80095BEC0 /* Unpacker.swift */,
+				28FCF86A2A605051008926EC /* ParserData.swift */,
+				28FCF86C2A605BB3008926EC /* Container.swift */,
 			);
 			path = Parser;
 			sourceTree = "<group>";
@@ -467,11 +476,14 @@
 			files = (
 				E93FCDD42A6004D80095BEC0 /* Unpacker.swift in Sources */,
 				E93FCDD32A6004D80095BEC0 /* Reader.swift in Sources */,
+				28FCF86B2A605051008926EC /* ParserData.swift in Sources */,
 				28FCF85D2A58D973008926EC /* AppDelegate.swift in Sources */,
 				28FCF8592A58D973008926EC /* ViewController.swift in Sources */,
 				28FCF8672A58E62F008926EC /* EBookModel.swift in Sources */,
+				28FCF8692A604D2A008926EC /* Parser.swift in Sources */,
 				E93FCDD72A6009ED0095BEC0 /* FileManager_Extension.swift in Sources */,
 				28FCF8652A58E5BA008926EC /* BookModel.swift in Sources */,
+				28FCF86D2A605BB3008926EC /* Container.swift in Sources */,
 				28FCF85F2A58D973008926EC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
