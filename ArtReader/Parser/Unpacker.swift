@@ -30,13 +30,18 @@ extension Unpacker: SSZipArchiveDelegate {
     func zipArchiveWillUnzipArchive(atPath path: String, zipInfo: unz_global_info) {
         debugPrint("将要解包:", path)
     }
-    func zipArchiveWillUnzipFile(at fileIndex: Int, totalFiles: Int, archivePath: String, fileInfo: unz_file_info) {
-        debugPrint("将要解包File:", archivePath)
-    }
     
     func zipArchiveShouldUnzipFile(at fileIndex: Int, totalFiles: Int, archivePath: String, fileInfo: unz_file_info) -> Bool {
         debugPrint("是否解包File:", archivePath)
         return true
+    }
+    
+    func zipArchiveWillUnzipFile(at fileIndex: Int, totalFiles: Int, archivePath: String, fileInfo: unz_file_info) {
+        debugPrint("将要解包File:", archivePath)
+    }
+    
+    func zipArchiveDidUnzipFile(at fileIndex: Int, totalFiles: Int, archivePath: String, fileInfo: unz_file_info) {
+        debugPrint("解包完成File:",archivePath)
     }
     
     func zipArchiveProgressEvent(_ loaded: UInt64, total: UInt64) {
@@ -47,19 +52,11 @@ extension Unpacker: SSZipArchiveDelegate {
         debugPrint("解包完成:",unzippedPath)
     }
     
-    func zipArchiveDidUnzipFile(at fileIndex: Int, totalFiles: Int, archivePath: String, fileInfo: unz_file_info) {
-        debugPrint("解包完成File:",archivePath)
-    }
+    
     
     func zipArchiveDidUnzipFile(at fileIndex: Int, totalFiles: Int, archivePath: String, unzippedFilePath: String) {
         debugPrint("解包完成File2:",archivePath)
     }
-    
-    
-    
-    
-    
-    
 }
 
 

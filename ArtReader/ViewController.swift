@@ -14,10 +14,14 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         let bookName = "小说现代中国"
         if let url = Bundle.main.url(forResource: bookName, withExtension: "epub") {
-            var appDocumentPath =  NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-            appDocumentPath += "/\(bookName)"
-            SSZipArchive.unzipFile(atPath: url.pathExtension, toDestination: appDocumentPath)
+            guard let appDocumentUrl = FileManager.default.documentsURL else { return }
+            let bookDocumentUrl = appDocumentUrl.appendingPathComponent(bookName)
+            
+            
+            let unpacker = Unpacker()
+            unpacker.unPackage(epubFileURL: url, unPackageURL: bookDocumentUrl)
         }
+        
     }
 
 
