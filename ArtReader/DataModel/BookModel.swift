@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftSoup
 class BookModel: Codable {
     var name: String!
 }
