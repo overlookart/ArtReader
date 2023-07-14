@@ -48,4 +48,16 @@ struct Content {
             guide = Guide(element: guideElement)
         }
     }
+    
+    func getTocFilePath() -> String? {
+        guard let items = manifest else { return nil }
+        var tocfilePath: String?
+        for item in items {
+            if item.mediaType == "application/x-dtbncx+xml" {
+                tocfilePath = item.href
+                break
+            }
+        }
+        return tocfilePath
+    }
 }

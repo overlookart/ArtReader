@@ -27,5 +27,6 @@ struct ParserData {
     
     mutating func setupToc(doc: Document?){
         guard let d = doc else { return }
+        toc = Toc(doc: d)
     }
 }

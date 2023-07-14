@@ -45,11 +45,25 @@ class Parser {
     /// - Parameter fileUrl: 文件地址
     func parseContent(fileUrl: URL){
         guard FileManager.default.fileExists(atPath: fileUrl.path) else {
-            debugPrint("未找到 content 文件", fileUrl.path)
+            debugPrint("未找到 content.opf 文件", fileUrl.path)
             return
         }
         guard let data = try? Data(contentsOf: fileUrl), let str = String(data: data, encoding: .utf8) else { return }
         parserData.setupContent(doc: parseXml(xmlStr: str))
+        if let tocFilePath = parserData.content?.getTocFilePath(), let epuburl = epubUrl {
+            let tocUrl = epuburl.appendingPathComponent(tocFilePath)
+            parseToc(fileUrl: tocUrl)
+        }
+        
+    }
+    
+    func parseToc(fileUrl: URL){
+        guard FileManager.default.fileExists(atPath: fileUrl.path) else {
+            debugPrint("未找到 toc.ncx 文件", fileUrl.path)
+            return
+        }
+        guard let data = try? Data(contentsOf: fileUrl), let str = String(data: data, encoding: .utf8) else { return }
+        parserData.setupToc(doc: parseXml(xmlStr: str))
     }
     
     func parseXml(xmlStr: String) -> Document? {
