@@ -33,6 +33,7 @@
 		E93FCDDD2A60E57E0095BEC0 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93FCDDC2A60E57E0095BEC0 /* Item.swift */; };
 		E93FCDDF2A60F3E70095BEC0 /* Spine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93FCDDE2A60F3E70095BEC0 /* Spine.swift */; };
 		E93FCDE12A60F48E0095BEC0 /* Guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93FCDE02A60F48E0095BEC0 /* Guide.swift */; };
+		E93FCDE42A6117940095BEC0 /* Toc.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93FCDE32A6117940095BEC0 /* Toc.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		E93FCDDC2A60E57E0095BEC0 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		E93FCDDE2A60F3E70095BEC0 /* Spine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spine.swift; sourceTree = "<group>"; };
 		E93FCDE02A60F48E0095BEC0 /* Guide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guide.swift; sourceTree = "<group>"; };
+		E93FCDE32A6117940095BEC0 /* Toc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toc.swift; sourceTree = "<group>"; };
 		F877E566C7C5A84B958939C0 /* Pods-ArtReader-ArtReaderUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtReader-ArtReaderUITests.release.xcconfig"; path = "Target Support Files/Pods-ArtReader-ArtReaderUITests/Pods-ArtReader-ArtReaderUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -224,6 +226,7 @@
 				E93FCDDC2A60E57E0095BEC0 /* Item.swift */,
 				E93FCDDE2A60F3E70095BEC0 /* Spine.swift */,
 				E93FCDE02A60F48E0095BEC0 /* Guide.swift */,
+				E93FCDE32A6117940095BEC0 /* Toc.swift */,
 			);
 			path = Parser;
 			sourceTree = "<group>";
@@ -501,6 +504,7 @@
 				E93FCDDB2A60E1070095BEC0 /* Metadata.swift in Sources */,
 				E93FCDD72A6009ED0095BEC0 /* FileManager_Extension.swift in Sources */,
 				28FCF8652A58E5BA008926EC /* BookModel.swift in Sources */,
+				E93FCDE42A6117940095BEC0 /* Toc.swift in Sources */,
 				28FCF86D2A605BB3008926EC /* Container.swift in Sources */,
 				E93FCDDF2A60F3E70095BEC0 /* Spine.swift in Sources */,
 				28FCF85F2A58D973008926EC /* SceneDelegate.swift in Sources */,

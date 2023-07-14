@@ -13,6 +13,8 @@ struct ParserData {
     
     var content: Content?
     
+    var toc: Toc?
+    
     mutating func setupContainer(doc: Document?){
         guard let d = doc else { return }
         self.container = Container(doc: d)
@@ -21,5 +23,9 @@ struct ParserData {
     mutating func setupContent(doc: Document?){
         guard let d = doc else { return }
         content = Content(doc: d)
+    }
+    
+    mutating func setupToc(doc: Document?){
+        guard let d = doc else { return }
     }
 }

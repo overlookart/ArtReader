@@ -13,20 +13,21 @@ struct Content {
     var unique_identifier: String?
     /// 元数据
     var metadata: Metadata?
-    /// 文件清单
+    /// 整本书的文件清单
     var manifest: [Item]?
-    
+    /// 书脊，所有xhtml文档的线性阅读顺序
     var spine: Spine?
     
     var guide: Guide?
     
     init(doc: Document){
+        
         /// 获取 package 元素
         guard let packageElement = try? doc.getElementsByTag("package").first() else { return }
+        
         /// 获取 metadata 元素
         if let metadataElement = try? packageElement.getElementsByTag("metadata").first() {
             metadata = Metadata(element: metadataElement)
-            debugPrint(metadata)
         }
         
         /// 获取 manifest 的 item 元素
@@ -37,7 +38,14 @@ struct Content {
                     manifest?.append(Item(id: id, href: href, mediaType: type))
                 }
             }
-            debugPrint(manifest)
+        }
+        
+        if let spineElement = try? packageElement.getElementsByTag("spine").first(){
+            spine = Spine(element: spineElement)
+        }
+        
+        if let guideElement = try? packageElement.getElementsByTag("guide").first() {
+            guide = Guide(element: guideElement)
         }
     }
 }
