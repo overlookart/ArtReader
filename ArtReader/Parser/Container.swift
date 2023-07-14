@@ -29,4 +29,18 @@ struct Container {
             rootFiles?.append(footf)
         }
     }
+    
+    
+    /// 获取 content.opf
+    /// - Returns: RootFile
+    func getContentFile() -> RootFile? {
+        guard let rootfs = rootFiles else { return nil }
+        var contentFile: RootFile?
+        for rootf in rootfs {
+            if ((rootf.fullPath?.range(of: "content.opf")) != nil) {
+                contentFile = rootf
+            }
+        }
+        return contentFile
+    }
 }

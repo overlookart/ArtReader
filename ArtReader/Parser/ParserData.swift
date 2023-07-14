@@ -8,10 +8,18 @@
 import Foundation
 import SwiftSoup
 struct ParserData {
+    
     var container: Container?
+    
+    var content: Content?
     
     mutating func setupContainer(doc: Document?){
         guard let d = doc else { return }
         self.container = Container(doc: d)
+    }
+    
+    mutating func setupContent(doc: Document?){
+        guard let d = doc else { return }
+        content = Content(doc: d)
     }
 }
