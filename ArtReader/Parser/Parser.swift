@@ -7,10 +7,32 @@
 
 import Foundation
 import SwiftSoup
+
+protocol ParserDelegate {
+    
+    /// 开始解析 epub
+    func beginParserEpub()
+    
+    /// 解析 container
+    func didParserContainer()
+    
+    /// 解析 Content
+    func didParserContent()
+    
+    /// 解析 TOC
+    func didParserToc()
+    
+    /// 解析 epub 完成
+    func endedParserEpub()
+    
+    /// 解析 Epub 出错
+    func errorParserEpub()
+}
+
 class Parser {
     var epubUrl: URL?
     var parserData = ParserData()
-    
+    var delegate: ParserDelegate?
     /// 解析 Epub 文件内容
     /// - Parameter epubUrl: 已经减压后 Epub 文件夹路径
     func parseEpub(epubUrl: URL){
@@ -50,8 +72,9 @@ class Parser {
         }
         guard let data = try? Data(contentsOf: fileUrl), let str = String(data: data, encoding: .utf8) else { return }
         parserData.setupContent(doc: parseXml(xmlStr: str))
-        if let tocFilePath = parserData.content?.getTocFilePath(), let epuburl = epubUrl {
-            let tocUrl = epuburl.appendingPathComponent(tocFilePath)
+        if let tocFilePath = parserData.content?.getTocFilePath(), let epuburl = epubUrl, let resourcePath = parserData.container?.resourcePath {
+            var tocUrl = epuburl.appendingPathComponent(resourcePath)
+            tocUrl = tocUrl.appendingPathComponent(tocFilePath)
             parseToc(fileUrl: tocUrl)
         }
         

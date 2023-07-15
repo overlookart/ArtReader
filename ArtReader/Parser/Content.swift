@@ -51,13 +51,6 @@ struct Content {
     
     func getTocFilePath() -> String? {
         guard let items = manifest else { return nil }
-        var tocfilePath: String?
-        for item in items {
-            if item.mediaType == "application/x-dtbncx+xml" {
-                tocfilePath = item.href
-                break
-            }
-        }
-        return tocfilePath
+        return items.filter({ $0.mediaType == "application/x-dtbncx+xml" }).first?.href
     }
 }

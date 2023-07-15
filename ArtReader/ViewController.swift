@@ -8,7 +8,7 @@
 import UIKit
 import SSZipArchive
 class ViewController: UIViewController {
-    let bookName = "小说现代中国"
+    let bookName = "鲁迅文集精选"
     let unpacker = Unpacker()
     let parser = Parser()
     var bookFileUrl: URL?

@@ -11,6 +11,7 @@ struct Container {
     var version: String?
     var xmlns: String?
     var rootFiles: [RootFile]?
+    var resourcePath: String = ""
     struct RootFile {
         var fullPath: String?
         var mediaType: String?
@@ -25,8 +26,12 @@ struct Container {
         guard let rootfs = try? doc.getElementsByTag("rootfile") else { return }
         rootFiles = []
         for element in rootfs {
-            let footf = RootFile(fullPath: element.getAttributes()?.get(key: "full-path"), mediaType: element.getAttributes()?.get(key: "media-type"))
+            let footf = RootFile(fullPath: try? element.attr("full-path"), mediaType: try? element.attr("media-type"))
+//            (footf.fullPath? as NSString).deletingLastPathComponent
             rootFiles?.append(footf)
+        }
+        if let content = getContentFile()?.fullPath {
+            resourcePath = (content as NSString).deletingLastPathComponent
         }
     }
     
@@ -35,12 +40,6 @@ struct Container {
     /// - Returns: RootFile
     func getContentFile() -> RootFile? {
         guard let rootfs = rootFiles else { return nil }
-        var contentFile: RootFile?
-        for rootf in rootfs {
-            if ((rootf.fullPath?.range(of: "content.opf")) != nil) {
-                contentFile = rootf
-            }
-        }
-        return contentFile
+        return rootfs.filter({ $0.fullPath?.range(of: "content.opf") != nil }).first
     }
 }

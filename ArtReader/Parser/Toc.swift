@@ -12,11 +12,15 @@ struct Toc {
         var id: String?
         var playOrder: String?
         var classStr: String?
+        /// 章节标题
         var label: String?
-        var content: String
+        /// 章节内容
+        var content: String?
+        /// 子章节
         var navItems:[NavItem]?
     }
     var uid: String?
+    /// 深度
     var depth: String?
     var totalPageCount: String?
     var maxPageNumber: String?
@@ -48,14 +52,29 @@ struct Toc {
         
         /// nav items
         if let navMap = try? ncxElement.getElementsByTag("navMap").first() {
-            if let childNodes = try? navMap.getChildNodes() {
-                for (index, node) in childNodes.enumerated() {
-                    debugPrint(node.nodeName(), index)
-                }
-                
+            navItems = navPoint(elements: navMap.children())
+        }
+    }
+    
+    private func navPoint(elements: Elements) -> [NavItem]? {
+        guard let _ = elements.filter({$0.tagName() == "navPoint"}).first else {
+            return nil
+        }
+        var items: [NavItem] = []
+        for element in elements {
+            if element.tagName() == "navPoint" {
+                var item = NavItem()
+                item.id = try? element.attr("id")
+                item.playOrder = try? element.attr("playOrder")
+                item.classStr = try? element.attr("class")
+                let childElements = element.children()
+                item.label = try? childElements.filter({ $0.tagName() == "navLabel" }).first?.getElementsByTag("text").text()
+                item.content = try? childElements.filter({ $0.tagName() == "content" }).first?.attr("src")
+                item.navItems = navPoint(elements: childElements)
+                items.append(item)
             }
         }
-        
+        return items
     }
     
 }
