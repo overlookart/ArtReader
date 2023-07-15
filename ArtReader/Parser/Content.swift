@@ -40,8 +40,8 @@ struct Content {
             }
         }
         
-        if let spineElement = try? packageElement.getElementsByTag("spine").first(){
-            spine = Spine(element: spineElement)
+        if let spineElement = try? packageElement.getElementsByTag("spine").first(), let m = manifest {
+            spine = Spine(element: spineElement, manifest: m)
         }
         
         if let guideElement = try? packageElement.getElementsByTag("guide").first() {
