@@ -6,3 +6,7 @@
 //
 
 import Foundation
+import WebKit
+class Reader {
+    
+}

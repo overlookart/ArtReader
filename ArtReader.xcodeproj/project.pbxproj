@@ -24,6 +24,7 @@
 		28FCF86B2A605051008926EC /* ParserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FCF86A2A605051008926EC /* ParserData.swift */; };
 		28FCF86D2A605BB3008926EC /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FCF86C2A605BB3008926EC /* Container.swift */; };
 		28FCF86F2A62305A008926EC /* 鲁迅文集精选.epub in Resources */ = {isa = PBXBuildFile; fileRef = 28FCF86E2A62305A008926EC /* 鲁迅文集精选.epub */; };
+		28FCF8712A626481008926EC /* EpubModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FCF8702A626481008926EC /* EpubModel.swift */; };
 		2E1EE72063E9208108A05B66 /* Pods_ArtReader_ArtReaderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5BA35063646E1CF63337975 /* Pods_ArtReader_ArtReaderUITests.framework */; };
 		66D92F50469F74D2F70ACF8E /* Pods_ArtReaderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8002DF44A26F19A5F11A15F8 /* Pods_ArtReaderTests.framework */; };
 		E93FCDD32A6004D80095BEC0 /* Reader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93FCDD02A6004D80095BEC0 /* Reader.swift */; };
@@ -31,7 +32,7 @@
 		E93FCDD72A6009ED0095BEC0 /* FileManager_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93FCDD62A6009ED0095BEC0 /* FileManager_Extension.swift */; };
 		E93FCDD92A60DBE10095BEC0 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93FCDD82A60DBE10095BEC0 /* Content.swift */; };
 		E93FCDDB2A60E1070095BEC0 /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93FCDDA2A60E1070095BEC0 /* Metadata.swift */; };
-		E93FCDDD2A60E57E0095BEC0 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93FCDDC2A60E57E0095BEC0 /* Item.swift */; };
+		E93FCDDD2A60E57E0095BEC0 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93FCDDC2A60E57E0095BEC0 /* Resource.swift */; };
 		E93FCDDF2A60F3E70095BEC0 /* Spine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93FCDDE2A60F3E70095BEC0 /* Spine.swift */; };
 		E93FCDE12A60F48E0095BEC0 /* Guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93FCDE02A60F48E0095BEC0 /* Guide.swift */; };
 		E93FCDE42A6117940095BEC0 /* Toc.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93FCDE32A6117940095BEC0 /* Toc.swift */; };
@@ -76,6 +77,7 @@
 		28FCF86A2A605051008926EC /* ParserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserData.swift; sourceTree = "<group>"; };
 		28FCF86C2A605BB3008926EC /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		28FCF86E2A62305A008926EC /* 鲁迅文集精选.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "鲁迅文集精选.epub"; sourceTree = "<group>"; };
+		28FCF8702A626481008926EC /* EpubModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpubModel.swift; sourceTree = "<group>"; };
 		403DD2B502355A195CA2A3D8 /* Pods-ArtReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtReader.debug.xcconfig"; path = "Target Support Files/Pods-ArtReader/Pods-ArtReader.debug.xcconfig"; sourceTree = "<group>"; };
 		8002DF44A26F19A5F11A15F8 /* Pods_ArtReaderTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArtReaderTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A383AA07A60D2A5F2EB0F4FF /* Pods-ArtReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtReader.release.xcconfig"; path = "Target Support Files/Pods-ArtReader/Pods-ArtReader.release.xcconfig"; sourceTree = "<group>"; };
@@ -88,7 +90,7 @@
 		E93FCDD62A6009ED0095BEC0 /* FileManager_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager_Extension.swift; sourceTree = "<group>"; };
 		E93FCDD82A60DBE10095BEC0 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		E93FCDDA2A60E1070095BEC0 /* Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metadata.swift; sourceTree = "<group>"; };
-		E93FCDDC2A60E57E0095BEC0 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		E93FCDDC2A60E57E0095BEC0 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		E93FCDDE2A60F3E70095BEC0 /* Spine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spine.swift; sourceTree = "<group>"; };
 		E93FCDE02A60F48E0095BEC0 /* Guide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guide.swift; sourceTree = "<group>"; };
 		E93FCDE32A6117940095BEC0 /* Toc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toc.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				E93FCDD02A6004D80095BEC0 /* Reader.swift */,
+				28FCF8702A626481008926EC /* EpubModel.swift */,
 			);
 			path = Reader;
 			sourceTree = "<group>";
@@ -226,7 +229,7 @@
 				28FCF86C2A605BB3008926EC /* Container.swift */,
 				E93FCDD82A60DBE10095BEC0 /* Content.swift */,
 				E93FCDDA2A60E1070095BEC0 /* Metadata.swift */,
-				E93FCDDC2A60E57E0095BEC0 /* Item.swift */,
+				E93FCDDC2A60E57E0095BEC0 /* Resource.swift */,
 				E93FCDDE2A60F3E70095BEC0 /* Spine.swift */,
 				E93FCDE02A60F48E0095BEC0 /* Guide.swift */,
 				E93FCDE32A6117940095BEC0 /* Toc.swift */,
@@ -501,7 +504,8 @@
 				28FCF86B2A605051008926EC /* ParserData.swift in Sources */,
 				28FCF85D2A58D973008926EC /* AppDelegate.swift in Sources */,
 				E93FCDE12A60F48E0095BEC0 /* Guide.swift in Sources */,
-				E93FCDDD2A60E57E0095BEC0 /* Item.swift in Sources */,
+				28FCF8712A626481008926EC /* EpubModel.swift in Sources */,
+				E93FCDDD2A60E57E0095BEC0 /* Resource.swift in Sources */,
 				28FCF8592A58D973008926EC /* ViewController.swift in Sources */,
 				28FCF8672A58E62F008926EC /* EBookModel.swift in Sources */,
 				28FCF8692A604D2A008926EC /* Parser.swift in Sources */,

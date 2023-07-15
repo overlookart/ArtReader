@@ -16,7 +16,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        
+        parser.delegate = self
         
     }
     
@@ -31,9 +31,38 @@ class ViewController: UIViewController {
             }
         }
     }
+    
     @IBAction func parserEpubFileAction(_ sender: Any) {
         guard let url = bookFileUrl else { return }
         parser.parseEpub(epubUrl: url)
     }
+}
+
+extension ViewController: ParserDelegate {
+    func beginParserEpub(url: URL) {
+        debugPrint("开始解析 epub")
+    }
+    
+    func didParserContainer() {
+        debugPrint("已解析 container")
+    }
+    
+    func didParserContent() {
+        debugPrint("已解析 content")
+    }
+    
+    func didParserToc() {
+        debugPrint("已解析 toc")
+    }
+    
+    func endedParserEpub() {
+        debugPrint("解析 epub 完成")
+    }
+    
+    func errorParserEpub(error: ParserError) {
+        debugPrint("解析 epub 出错:", error)
+    }
+    
+    
 }
 

@@ -14,7 +14,7 @@ struct Content {
     /// 元数据
     var metadata: Metadata?
     /// 整本书的文件清单
-    var manifest: [Item]?
+    var manifest: [Resource]?
     /// 书脊，所有xhtml文档的线性阅读顺序
     var spine: Spine?
     
@@ -35,7 +35,7 @@ struct Content {
             manifest = []
             for i in items {
                 if let id = try? i.attr("id"), let href = try? i.attr("href"), let type = try? i.attr("media-type") {
-                    manifest?.append(Item(id: id, href: href, mediaType: type))
+                    manifest?.append(Resource(id: id, href: href, mediaType: type))
                 }
             }
         }
@@ -51,6 +51,6 @@ struct Content {
     
     func getTocFilePath() -> String? {
         guard let items = manifest else { return nil }
-        return items.filter({ $0.mediaType == "application/x-dtbncx+xml" }).first?.href
+        return items.filter({ $0.mediaType == .ncx }).first?.href
     }
 }
