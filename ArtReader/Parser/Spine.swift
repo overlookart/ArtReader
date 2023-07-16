@@ -11,6 +11,7 @@ struct Spine {
     struct SpineItem {
         var idref: String
         var resource: Resource
+        var content: String?
     }
     var toc: String?
     var items: [SpineItem]?

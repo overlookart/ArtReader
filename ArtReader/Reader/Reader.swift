@@ -6,7 +6,13 @@
 //
 
 import Foundation
-import WebKit
+import UIKit
 class Reader {
-    
+    let readerCenter = ReaderCenter()
+    func openBook(vc: UIViewController, book: EpubBook) {
+        let nav = UINavigationController(rootViewController: readerCenter)
+        nav.modalPresentationStyle = .fullScreen
+        readerCenter.epubBook = book
+        vc.present(nav, animated: true)
+    }
 }

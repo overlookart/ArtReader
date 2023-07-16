@@ -40,6 +40,9 @@ enum ParserError: Error {
     
     /// 转 XML 失败
     case ToXMLFailed(message: String, xmlStr: String)
+    
+    /// content 内容缺失
+    case ContentLack(message: String)
 }
 
 class Parser {
@@ -181,6 +184,9 @@ class Parser {
         }
         guard let doc = parseXml(xmlStr: str) else {
             throw ParserError.ToXMLFailed(message: "toc 解析 xml 失败", xmlStr: str)
+        }
+        guard let spines = parserData.content?.spine?.items else {
+            throw ParserError.ContentLack(message: "spine 内容缺失")
         }
         return Toc(doc: doc)
     }

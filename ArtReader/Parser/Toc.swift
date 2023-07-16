@@ -14,8 +14,9 @@ struct Toc {
         var classStr: String?
         /// 章节标题
         var label: String?
-        /// 章节内容
-        var content: String?
+        /// 章节内容资源
+        var contentSrc: String?
+        
         /// 子章节
         var navItems:[NavItem]?
     }
@@ -26,7 +27,7 @@ struct Toc {
     var maxPageNumber: String?
     var title: String?
     var navItems: [NavItem]?
-    init(doc: Document){
+    init(doc: Document) {
         guard let ncxElement = try? doc.getElementsByTag("ncx").first() else { return }
         /// meta
         if let metas = try? ncxElement.getElementsByTag("meta") {
@@ -69,7 +70,8 @@ struct Toc {
                 item.classStr = try? element.attr("class")
                 let childElements = element.children()
                 item.label = try? childElements.filter({ $0.tagName() == "navLabel" }).first?.getElementsByTag("text").text()
-                item.content = try? childElements.filter({ $0.tagName() == "content" }).first?.attr("src")
+                item.contentSrc = try? childElements.filter({ $0.tagName() == "content" }).first?.attr("src").split(separator: "#").map{String($0)}.first
+                
                 item.navItems = navPoint(elements: childElements)
                 items.append(item)
             }

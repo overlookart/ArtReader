@@ -8,9 +8,10 @@
 import UIKit
 import SSZipArchive
 class ViewController: UIViewController {
-    let bookName = "鲁迅文集精选"
+    let bookName = "小说现代中国"
     let unpacker = Unpacker()
     let parser = Parser()
+    let reader = Reader()
     var bookFileUrl: URL?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +37,10 @@ class ViewController: UIViewController {
         guard let url = bookFileUrl else { return }
         parser.parseEpub(epubUrl: url)
     }
+    
+    @IBAction func readEpubBookAction(_ sender: Any) {
+        reader.openBook(vc: self, book: EpubBook(parserData: parser.parserData))
+    }
 }
 
 extension ViewController: ParserDelegate {
@@ -56,7 +61,9 @@ extension ViewController: ParserDelegate {
     }
     
     func endedParserEpub() {
-        debugPrint("解析 epub 完成")
+        
+        let ebook = EpubBook(parserData: parser.parserData)
+        debugPrint("解析 epub 完成", ebook)
     }
     
     func errorParserEpub(error: ParserError) {
