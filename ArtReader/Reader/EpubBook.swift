@@ -83,10 +83,15 @@ struct EpubBook {
         
     }
     
+    /// 配置章节数据
+    /// - Parameters:
+    ///   - navItems: 原始数据
+    ///   - spines: 要关联的 spine 数据
+    /// - Returns: 章节数组
     private func setupChapters(navItems:[Toc.NavItem], spines:[Spine.SpineItem]) -> [Chapter] {
         var chapters: [Chapter] = []
         for item in navItems {
-            if let s = spines.filter({$0.resource.href == item.contentSrc}).first {
+            if let s = spines.filter({$0.resource.href.contains(item.contentSrc ?? "")}).first {
                 var chapter = Chapter(title: item.label ?? "", spine: s)
                 if let ci = item.navItems {
                     chapter.items = setupChapters(navItems: ci, spines: spines)

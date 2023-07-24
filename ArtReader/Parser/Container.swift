@@ -27,7 +27,6 @@ struct Container {
         rootFiles = []
         for element in rootfs {
             let footf = RootFile(fullPath: try? element.attr("full-path"), mediaType: try? element.attr("media-type"))
-//            (footf.fullPath? as NSString).deletingLastPathComponent
             rootFiles?.append(footf)
         }
         if let content = getContentFile()?.fullPath {

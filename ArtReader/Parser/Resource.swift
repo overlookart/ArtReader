@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct Resource {
+struct Resource: Equatable {
     
     enum MediaType: String, CaseIterable {
         case xhtml = "application/xhtml+xml"
@@ -41,9 +41,12 @@ struct Resource {
     /// 文件的 MIME 类型
     var mediaType: MediaType
     
-    init(id: String = "", href: String, mediaType: String) {
+    var rootPath: String
+    
+    init(id: String = "", href: String, mediaType: String, rootPath: String) {
         self.id = id
-        self.href = href
+        self.href = rootPath + "/" + href
         self.mediaType = MediaType(rawValue: mediaType) ?? .other
+        self.rootPath = rootPath
     }
 }

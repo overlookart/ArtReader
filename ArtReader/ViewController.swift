@@ -39,7 +39,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func readEpubBookAction(_ sender: Any) {
-        reader.openBook(vc: self, book: EpubBook(parserData: parser.parserData))
+        guard let url = bookFileUrl else { return }
+        reader.openBook(vc: self, book: EpubBook(parserData: parser.parserData), fileUrl: url)
     }
 }
 

@@ -6,15 +6,33 @@
 //
 
 import UIKit
-
+import LAWebView
+import SnapKit
 class ReaderCenter: UIViewController {
 
     var epubBook: EpubBook?
+    var baseURL: URL?
     
+    let pageVC: UIPageViewController = UIPageViewController(transitionStyle: .pageCurl, navigationOrientation: .horizontal)
+    
+    var readPages: [ReadPageVC] = [ReadPageVC(), ReadPageVC(), ReadPageVC()]
+    var pendingVC: ReadPageVC?
+    var dataSource: [Spine.SpineItem] = []
+    /// 上一次的下标
+    var previouIndex: Int = 0
+    /// 当前的下标
+    var currentIndex: Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         // Do any additional setup after loading the view.
+        
+        setupUI()
+        setupData()
+        pageVC.delegate = self
+        pageVC.dataSource = self
+        self.navigationController?.hidesBarsOnTap = true
+        pageVC.setViewControllers([readPages[1]], direction: .forward, animated: true)
+        
     }
     
 
@@ -28,4 +46,114 @@ class ReaderCenter: UIViewController {
     }
     */
 
+    private func setupUI(){
+        self.addChild(pageVC)
+        view.addSubview(pageVC.view)
+        pageVC.view.snp.makeConstraints { make in
+            make.edges.equalTo(self.view)
+        }
+    }
+    
+    private func setupData(){
+        guard let book = epubBook else { return }
+        dataSource = book.spines
+        readPages[0].spine = currentIndex - 1 < 0 ? nil : dataSource[currentIndex-1]
+        readPages[0].title = "0"
+        readPages[0].baseURL = baseURL
+        readPages[1].spine = dataSource[currentIndex]
+        readPages[1].title = "1"
+        readPages[1].baseURL = baseURL
+        readPages[2].spine = currentIndex + 1 > dataSource.count-1 ? nil : dataSource[currentIndex+1]
+        readPages[2].title = "2"
+        readPages[2].baseURL = baseURL
+        debugPrint("abc")
+    }
+    
+    private func index(OfPage page: ReadPageVC) -> Int? {
+        guard let spine = page.spine else { return nil }
+        return dataSource.firstIndex(of: spine)
+    }
+    
+    private func setupPageData(currentPage: ReadPageVC){
+        guard let index = readPages.firstIndex(of: currentPage) else { return }
+        let readPage0 = readPages[0]
+        let readPage1 = readPages[1]
+        let readPage2 = readPages[2]
+        debugPrint(index)
+        if index == 0 {
+            readPages = [readPage2,readPage0,readPage1]
+            readPages[0].spine = currentIndex - 1 < 0 ? nil : dataSource[currentIndex-1]
+            readPages[0].loadContent()
+        }else if index == 2 {
+            readPages = [readPage1,readPage2,readPage0]
+            readPages[2].spine = currentIndex + 1 > dataSource.count-1 ? nil : dataSource[currentIndex+1]
+            readPages[2].loadContent()
+        }
+    }
+    
+}
+
+
+extension ReaderCenter: UIPageViewControllerDelegate{
+    func pageViewController(_ pageViewController: UIPageViewController, spineLocationFor orientation: UIInterfaceOrientation) -> UIPageViewController.SpineLocation {
+        return .min
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+        if let vc = pendingViewControllers.first as? ReadPageVC {
+            pendingVC = vc
+            debugPrint("开始翻页", vc.title, readPages.firstIndex(of: vc))
+        }
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if !completed { return }
+        if let vc = pendingVC, let i = readPages.firstIndex(of: vc) {
+            
+            
+            if let index = index(OfPage: vc) {
+                currentIndex = index
+                debugPrint("结束翻页", finished, completed, vc.title, currentIndex)
+//                if currentIndex != previouIndex {
+                    setupPageData(currentPage: vc)
+//                }
+            }
+        }
+    }
+    
+//    func pageViewControllerPreferredInterfaceOrientationForPresentation(_ pageViewController: UIPageViewController) -> UIInterfaceOrientation {
+//
+//    }
+//
+//    func pageViewControllerSupportedInterfaceOrientations(_ pageViewController: UIPageViewController) -> UIInterfaceOrientationMask {
+//
+//    }
+}
+
+extension ReaderCenter: UIPageViewControllerDataSource {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        debugPrint("上一页")
+        guard readPages[0].spine != nil else {
+            return nil
+        }
+        return readPages[0]
+        
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        debugPrint("下一页")
+        guard readPages[2].spine != nil else {
+            return nil
+        }
+        return readPages[2]
+    }
+    
+    func presentationCount(for pageViewController: UIPageViewController) -> Int {
+        return readPages.count
+    }
+    
+    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+        return 1
+    }
+    
 }

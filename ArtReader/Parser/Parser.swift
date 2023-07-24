@@ -151,17 +151,17 @@ class Parser {
         guard let doc = parseXml(xmlStr: str) else {
             throw ParserError.ToXMLFailed(message: "content 解析 xml 失败", xmlStr: str)
         }
-        return Content(doc: doc)
+        return Content(doc: doc, resourcePath: parserData.container?.resourcePath)
     }
     
     private func parseToc() throws {
         guard let epuburl = epubUrl else { return }
-        guard let tocFilePath = parserData.content?.getTocFilePath(), let epuburl = epubUrl, let resourcePath = parserData.container?.resourcePath else {
+        guard let tocFilePath = parserData.content?.getTocFilePath(), let epuburl = epubUrl else {
             throw ParserError.FileInvalid(message: "没有 toc 文件地址", fileUrl: nil)
             
         }
-        var tocUrl = epuburl.appendingPathComponent(resourcePath)
-        tocUrl = tocUrl.appendingPathComponent(tocFilePath)
+        var tocUrl = epuburl.appendingPathComponent(tocFilePath)
+        
         guard FileManager.default.fileExists(atPath: tocUrl.path) else {
             throw ParserError.FileInvalid(message: "未找到 toc 文件", fileUrl: tocUrl)
         }

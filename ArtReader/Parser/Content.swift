@@ -20,7 +20,7 @@ struct Content {
     
     var guide: Guide?
     
-    init(doc: Document){
+    init(doc: Document, resourcePath: String?){
         
         /// 获取 package 元素
         guard let packageElement = try? doc.getElementsByTag("package").first() else { return }
@@ -35,7 +35,7 @@ struct Content {
             manifest = []
             for i in items {
                 if let id = try? i.attr("id"), let href = try? i.attr("href"), let type = try? i.attr("media-type") {
-                    manifest?.append(Resource(id: id, href: href, mediaType: type))
+                    manifest?.append(Resource(id: id, href: href, mediaType: type, rootPath: resourcePath ?? ""))
                 }
             }
         }

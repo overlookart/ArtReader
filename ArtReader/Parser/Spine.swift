@@ -8,7 +8,11 @@
 import Foundation
 import SwiftSoup
 struct Spine {
-    struct SpineItem {
+    struct SpineItem: Equatable {
+        static func == (lhs: Spine.SpineItem, rhs: Spine.SpineItem) -> Bool {
+            return lhs.idref == rhs.idref && lhs.content == rhs.content && lhs.resource == rhs.resource
+        }
+        
         var idref: String
         var resource: Resource
         var content: String?
