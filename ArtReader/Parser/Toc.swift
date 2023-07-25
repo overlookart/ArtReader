@@ -16,7 +16,6 @@ struct Toc {
         var label: String?
         /// 章节内容资源
         var contentSrc: String?
-        
         /// 子章节
         var navItems:[NavItem]?
     }

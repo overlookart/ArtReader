@@ -8,6 +8,7 @@
 import UIKit
 import LAWebView
 import ZMarkupParser
+import WebKit
 class ReadPageVC: UIViewController {
     let webView: LAWebView = LAWebView(config: WebConfigComponent())
     var spine: Spine.SpineItem?
@@ -22,20 +23,49 @@ class ReadPageVC: UIViewController {
         webView.snp.makeConstraints { make in
             make.edges.equalTo(self.view.safeAreaLayoutGuide.snp.edges)
         }
-//        lab.backgroundColor = .white
-//        lab.numberOfLines = 0
-//        view.addSubview(lab)
-//        lab.snp.makeConstraints { make in
-//            make.edges.equalTo(self.view.safeAreaLayoutGuide.snp.edges)
-//        }
+        
+        webView.configuration.allowsInlineMediaPlayback = true
+        webView.configuration.preferences.javaScriptEnabled = true
+        webView.configuration.preferences.javaScriptCanOpenWindowsAutomatically = true
+        
+        let jsString = """
+            var meta = document.createElement('meta');
+            meta.setAttribute('name', 'viewport');
+            meta.setAttribute('content', 'width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no');
+            document.getElementsByTagName('head')[0].appendChild(meta);
+        """
+        let userScript = WKUserScript(source: jsString, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
+        webView.configuration.userContentController.addUserScript(userScript)
+//        webView.scrollView.isPagingEnabled = true
+        webView.scrollView.isPagingEnabled = true
+        webView.configuration.dataDetectorTypes = .all
+        webView.navigationDelegates = (DecidePolicyNavigationAction:{ action in
+            return WKNavigationActionPolicy.allow
+        },DidStartNavigation:{ action in
+            
+        },DecidePolicyNavigationResponse:{ response in
+            self.navigationResponse(response: response.response)
+            return WKNavigationResponsePolicy.allow
+        },DidCommitNavigation:{ action in
+            
+        },DidReceiveServerRedirect: { nav in
+            
+        },DidReceiveAuthChallenge: {
+            return (AuthChallenge:URLSession.AuthChallengeDisposition.rejectProtectionSpace,Credential: nil)
+        },DidFinishNavigation: { nav in
+            debugPrint("导航完成")
+        },DidFailNavigation:{ nav, err in
+            debugPrint("导航失败", err)
+        },DidFailProvisional:{ nav, err in
+            debugPrint("加载内容失败", err)
+        },DidTerminate:{
+            debugPrint("加载Terminate")
+        })
+        
         loadContent()
-        
-        
-        
-        
     }
     
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -53,16 +83,28 @@ class ReadPageVC: UIViewController {
 
     func loadHtmlFile(url: URL, baseURL: URL?){
         guard let htmlStr = try? String(data: Data(contentsOf: url), encoding: .utf8) else { return }
-//        webView.loadHTMLString(htmlStr, baseURL: baseURL)
+        webView.loadHTMLString(htmlStr, baseURL: baseURL)
     }
     
     public func loadContent(){
         guard let href = spine?.resource.href, let url = baseURL?.appendingPathComponent(href) else { return }
         guard let htmlStr = try? String(data: Data(contentsOf: url), encoding: .utf8) else { return }
-        webView.loadHTMLString(htmlStr, baseURL: baseURL)
-
-//        debugPrint(htmlStr)
-//        lab.setHtmlString(htmlStr, with: parser)
+        
+        let cssFilePath = Bundle.main.path(forResource: "Style", ofType: "css")
+        let cssTag = "<link rel=\"stylesheet\" type=\"text/css\" href=\"\(cssFilePath!)\">"
+        let toInject = "\n\(cssTag)\n</head>"
+        var html = htmlStr.replacingOccurrences(of: "</head>", with: toInject)
+//        html = html.replacingOccurrences(of: "<html ", with: "<html class=\"andada textSizeFive\"")
+        webView.loadHTMLString(html, baseURL: URL(fileURLWithPath: url.deletingLastPathComponent().path))
         
     }
+    
+    func navigationResponse(response: URLResponse){
+        guard let url = response.url else { return }
+        guard let scheme = response.url?.scheme else { return }
+        if scheme == "file" {
+            debugPrint(url.fragment,"\n",url)
+        }
+    }
+    
 }

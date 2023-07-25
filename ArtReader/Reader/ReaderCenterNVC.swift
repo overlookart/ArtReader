@@ -11,8 +11,10 @@ class ReaderCenterNVC: UINavigationController {
     let readerCenter: ReaderCenter = ReaderCenter()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = .white
         // Do any additional setup after loading the view.
+        self.setNavigationBarHidden(true, animated: true)
+        self.setToolbarHidden(true, animated: true)
     }
     
     init() {
@@ -33,7 +35,8 @@ class ReaderCenterNVC: UINavigationController {
             setToolbarHidden(false, animated: false)
         }
         self.hidesBarsOnTap = true
-//        self.hidesBarsOnSwipe = true
+        self.hidesBarsOnSwipe = true
+        self.barHideOnTapGestureRecognizer.addTarget(self, action: #selector(barHideOnTap))
     }
     
     /*
@@ -46,5 +49,8 @@ class ReaderCenterNVC: UINavigationController {
     }
     */
     
+    @objc private func barHideOnTap(){
+        debugPrint("barHideOnTap")
+    }
 
 }

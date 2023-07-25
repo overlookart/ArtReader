@@ -13,7 +13,7 @@ class ReaderCenter: UIViewController {
     var epubBook: EpubBook?
     var baseURL: URL?
     
-    let pageVC: UIPageViewController = UIPageViewController(transitionStyle: .pageCurl, navigationOrientation: .horizontal)
+    let pageVC: UIPageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .vertical)
     
     var readPages: [ReadPageVC] = [ReadPageVC(), ReadPageVC(), ReadPageVC()]
     var pendingVC: ReadPageVC?
@@ -132,20 +132,23 @@ extension ReaderCenter: UIPageViewControllerDelegate{
 
 extension ReaderCenter: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        debugPrint("上一页")
+        
         guard readPages[0].spine != nil else {
             return nil
         }
+        debugPrint("上一页")
         return readPages[0]
         
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        debugPrint("下一页")
+        
         guard readPages[2].spine != nil else {
             return nil
         }
+        debugPrint("下一页")
         return readPages[2]
+        
     }
     
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
