@@ -10,7 +10,7 @@ import LAWebView
 import ZMarkupParser
 import WebKit
 class ReadPageVC: UIViewController {
-    let webView: LAWebView = LAWebView(config: WebConfigComponent())
+    let webView: LAWebView = LAWebView(config: WebConfig())
     var spine: Spine.SpineItem?
     var baseURL: URL?
 //    let parser = ZHTMLParserBuilder.initWithDefault().build()
@@ -23,19 +23,21 @@ class ReadPageVC: UIViewController {
         webView.snp.makeConstraints { make in
             make.edges.equalTo(self.view.safeAreaLayoutGuide.snp.edges)
         }
-        
-        webView.configuration.allowsInlineMediaPlayback = true
-        webView.configuration.preferences.javaScriptEnabled = true
-        webView.configuration.preferences.javaScriptCanOpenWindowsAutomatically = true
-        
         let jsString = """
             var meta = document.createElement('meta');
             meta.setAttribute('name', 'viewport');
             meta.setAttribute('content', 'width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no');
             document.getElementsByTagName('head')[0].appendChild(meta);
         """
-        let userScript = WKUserScript(source: jsString, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
-        webView.configuration.userContentController.addUserScript(userScript)
+        webView.configuration.addUserScript(script: jsString, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
+        
+        do {
+            try webView.configuration.addUserScript(fileName: "Reader", injectionTime: .atDocumentStart, forMainFrameOnly: true)
+//            try webView.configuration.addUserScript(fileName: "Bridge", injectionTime: .atDocumentStart, forMainFrameOnly: true)
+        } catch  {
+            debugPrint(error)
+        }
+        
 //        webView.scrollView.isPagingEnabled = true
         webView.scrollView.isPagingEnabled = true
         webView.configuration.dataDetectorTypes = .all

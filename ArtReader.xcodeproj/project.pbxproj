@@ -42,6 +42,8 @@
 		E93FCDDF2A60F3E70095BEC0 /* Spine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93FCDDE2A60F3E70095BEC0 /* Spine.swift */; };
 		E93FCDE12A60F48E0095BEC0 /* Guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93FCDE02A60F48E0095BEC0 /* Guide.swift */; };
 		E93FCDE42A6117940095BEC0 /* Toc.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93FCDE32A6117940095BEC0 /* Toc.swift */; };
+		E9C94BA72A721FA7001BD449 /* Bridge.js in Resources */ = {isa = PBXBuildFile; fileRef = E9C94BA62A721FA7001BD449 /* Bridge.js */; };
+		E9C94BA92A723EE9001BD449 /* Reader.js in Resources */ = {isa = PBXBuildFile; fileRef = E9C94BA82A723EE9001BD449 /* Reader.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +108,8 @@
 		E93FCDDE2A60F3E70095BEC0 /* Spine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spine.swift; sourceTree = "<group>"; };
 		E93FCDE02A60F48E0095BEC0 /* Guide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guide.swift; sourceTree = "<group>"; };
 		E93FCDE32A6117940095BEC0 /* Toc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toc.swift; sourceTree = "<group>"; };
+		E9C94BA62A721FA7001BD449 /* Bridge.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Bridge.js; sourceTree = "<group>"; };
+		E9C94BA82A723EE9001BD449 /* Reader.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Reader.js; sourceTree = "<group>"; };
 		F877E566C7C5A84B958939C0 /* Pods-ArtReader-ArtReaderUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtReader-ArtReaderUITests.release.xcconfig"; path = "Target Support Files/Pods-ArtReader-ArtReaderUITests/Pods-ArtReader-ArtReaderUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -226,6 +230,7 @@
 		E93FCDCF2A6004D80095BEC0 /* Reader */ = {
 			isa = PBXGroup;
 			children = (
+				E9C94BA62A721FA7001BD449 /* Bridge.js */,
 				28FCF8DA2A6BD758008926EC /* Style.css */,
 				E93FCDD02A6004D80095BEC0 /* Reader.swift */,
 				28FCF8702A626481008926EC /* EpubBook.swift */,
@@ -234,6 +239,7 @@
 				28FCF8D62A6AF3E2008926EC /* RCNavigationBar.swift */,
 				28FCF8D82A6AF4A0008926EC /* RCToolBar.swift */,
 				28FCF8DC2A6BE248008926EC /* ReadPageVC.swift */,
+				E9C94BA82A723EE9001BD449 /* Reader.js */,
 			);
 			path = Reader;
 			sourceTree = "<group>";
@@ -386,11 +392,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				28FCF86F2A62305A008926EC /* 鲁迅文集精选.epub in Resources */,
+				E9C94BA72A721FA7001BD449 /* Bridge.js in Resources */,
 				28FCF8622A58DA0A008926EC /* 小说现代中国.epub in Resources */,
 				28FCF85C2A58D973008926EC /* Main.storyboard in Resources */,
 				28FCF85A2A58D973008926EC /* Assets.xcassets in Resources */,
 				28FCF85B2A58D973008926EC /* LaunchScreen.storyboard in Resources */,
 				28FCF8DB2A6BD758008926EC /* Style.css in Resources */,
+				E9C94BA92A723EE9001BD449 /* Reader.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

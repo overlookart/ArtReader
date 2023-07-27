@@ -1,12 +1,5 @@
-/**
- *  Style.css
- *  FolioReaderKit
- *
- *  Created by Heberti Almeida on 06/05/15.
- *  Copyright (c) 2015 Folio Reader. All rights reserved.
- */
 
-/* CSS Reset */
+/* 重置 CSS */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -241,6 +234,7 @@ html.nightMode .highlight-underline {border-bottom: 2px solid rgba(240, 40, 20, 
 .lora, .lora p, .lora span, .lora div { font-family: "Lora", serif !important; }
 .raleway, .raleway p, .raleway span, .raleway div { font-family: "Raleway", sans-serif !important; }
 
+/**字体大小配置*/
 html.textSizeOne, .textSizeOne body { font-size: 13px !important; }
 html.textSizeTwo, .textSizeTwo body { font-size: 15px !important; }
 html.textSizeThree, .textSizeThree body { font-size: 17px !important; }
