@@ -41,6 +41,14 @@
                 ele.className=ele.className.replace(reg,' ');
               }
             },
+
+            guid: function () {
+                function s4() {
+                    return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+                }
+                var guid = s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+                return guid.toUpperCase();
+            },
             
             //更新夜间模式
             updateNightMode: function(){
@@ -60,6 +68,32 @@
                     this.removeClass(elm, item);
                 })
                 this.addClass(elm, fontSizeClass);
+            },
+            
+            highlightString: function (style) {
+                var range = window.getSelection().getRangeAt(0);
+                var startOffset = range.startOffset;
+                var endOffset = range.endOffset;
+                var selectionContents = range.extractContents();
+                var elm = document.createElement("highlight");
+                var id = this.guid();
+    
+                elm.appendChild(selectionContents);
+                elm.setAttribute("id", id);
+                elm.setAttribute("onclick","callHighlightURL(this);");
+                elm.setAttribute("class", style);
+
+                range.insertNode(elm);
+                var params = [];
+                params.push({id: id, rect: this.getRectForSelectedText(elm), startOffset: startOffset.toString(), endOffset: endOffset.toString()});
+                return JSON.stringify(params);
+            },
+
+            getRectForSelectedText: function (elm) {
+                if (typeof elm === "undefined") elm = window.getSelection().getRangeAt(0);
+    
+                var rect = elm.getBoundingClientRect();
+                return "{{" + rect.left + "," + rect.top + "}, {" + rect.width + "," + rect.height + "}}";
             }
         }
     });

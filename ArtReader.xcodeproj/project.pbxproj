@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		06EF65596E6BB2DE91B62D67 /* Pods_ArtReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E00FD22E0BD0B17C8E7496 /* Pods_ArtReader.framework */; };
+		285ADCCB2A774A42005F48BD /* ReadWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285ADCCA2A774A42005F48BD /* ReadWebView.swift */; };
 		28FCF8372A58D30A008926EC /* ArtReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FCF8362A58D30A008926EC /* ArtReaderTests.swift */; };
 		28FCF8412A58D30A008926EC /* ArtReaderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FCF8402A58D30A008926EC /* ArtReaderUITests.swift */; };
 		28FCF8432A58D30A008926EC /* ArtReaderUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FCF8422A58D30A008926EC /* ArtReaderUITestsLaunchTests.swift */; };
@@ -65,6 +66,7 @@
 
 /* Begin PBXFileReference section */
 		1E52D05A0D06B5DAC2B7974F /* Pods-ArtReaderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtReaderTests.debug.xcconfig"; path = "Target Support Files/Pods-ArtReaderTests/Pods-ArtReaderTests.debug.xcconfig"; sourceTree = "<group>"; };
+		285ADCCA2A774A42005F48BD /* ReadWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadWebView.swift; sourceTree = "<group>"; };
 		28FCF81C2A58D309008926EC /* ArtReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28FCF8322A58D30A008926EC /* ArtReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArtReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		28FCF8362A58D30A008926EC /* ArtReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtReaderTests.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				28FCF8D82A6AF4A0008926EC /* RCToolBar.swift */,
 				28FCF8DC2A6BE248008926EC /* ReadPageVC.swift */,
 				E9C94BA82A723EE9001BD449 /* Reader.js */,
+				285ADCCA2A774A42005F48BD /* ReadWebView.swift */,
 			);
 			path = Reader;
 			sourceTree = "<group>";
@@ -543,6 +546,7 @@
 				E93FCDD72A6009ED0095BEC0 /* FileManager_Extension.swift in Sources */,
 				28FCF8732A62FC75008926EC /* ReaderCenter.swift in Sources */,
 				28FCF8652A58E5BA008926EC /* BookModel.swift in Sources */,
+				285ADCCB2A774A42005F48BD /* ReadWebView.swift in Sources */,
 				E93FCDE42A6117940095BEC0 /* Toc.swift in Sources */,
 				28FCF86D2A605BB3008926EC /* Container.swift in Sources */,
 				E93FCDDF2A60F3E70095BEC0 /* Spine.swift in Sources */,

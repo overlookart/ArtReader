@@ -18,7 +18,7 @@ target 'ArtReader' do
   # Pods for ArtReader
   pod 'SSZipArchive'
   pod 'SwiftSoup'
-  pod 'LAWebView', '~> 0.0.9'
+  pod 'LAWebView', '~> 0.1.0'
   pod 'SnapKit', '~> 5.0.0'
   pod 'ZMarkupParser', '~> 1.4.0'
   target 'ArtReaderTests' do

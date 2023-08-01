@@ -10,7 +10,7 @@ import LAWebView
 import ZMarkupParser
 import WebKit
 class ReadPageVC: UIViewController {
-    let webView: LAWebView = LAWebView(config: WebConfig())
+    let webView: ReadWebView = ReadWebView()
     var spine: Spine.SpineItem?
     var baseURL: URL?
 //    let parser = ZHTMLParserBuilder.initWithDefault().build()
@@ -23,13 +23,6 @@ class ReadPageVC: UIViewController {
         webView.snp.makeConstraints { make in
             make.edges.equalTo(self.view.safeAreaLayoutGuide.snp.edges)
         }
-        let jsString = """
-            var meta = document.createElement('meta');
-            meta.setAttribute('name', 'viewport');
-            meta.setAttribute('content', 'width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no');
-            document.getElementsByTagName('head')[0].appendChild(meta);
-        """
-        webView.configuration.addUserScript(script: jsString, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
         
         do {
             try webView.configuration.addUserScript(fileName: "Reader", injectionTime: .atDocumentStart, forMainFrameOnly: true)
@@ -39,8 +32,10 @@ class ReadPageVC: UIViewController {
         }
         
 //        webView.scrollView.isPagingEnabled = true
+        
         webView.scrollView.isPagingEnabled = true
-        webView.configuration.dataDetectorTypes = .all
+        
+        
         webView.navigationDelegates = (DecidePolicyNavigationAction:{ action in
             return WKNavigationActionPolicy.allow
         },DidStartNavigation:{ action in
@@ -86,6 +81,10 @@ class ReadPageVC: UIViewController {
     func loadHtmlFile(url: URL, baseURL: URL?){
         guard let htmlStr = try? String(data: Data(contentsOf: url), encoding: .utf8) else { return }
         webView.loadHTMLString(htmlStr, baseURL: baseURL)
+    }
+    
+    func setupHighlights(){
+        
     }
     
     public func loadContent(){
