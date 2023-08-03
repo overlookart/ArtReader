@@ -97,7 +97,7 @@
     
                 elm.appendChild(selectionContents);
                 elm.setAttribute("id", id);
-                elm.setAttribute("onclick","callHighlightURL(this);");
+                elm.setAttribute("onclick","__reader__.clickHighlight(this);");
                 elm.setAttribute("class", style);
 
                 range.insertNode(elm);
@@ -110,6 +110,17 @@
                 if (typeof elm === "undefined") elm = window.getSelection().getRangeAt(0);
                 var rect = elm.getBoundingClientRect();
                 return "{{" + rect.left + "," + rect.top + "}, {" + rect.width + "," + rect.height + "}}";
+            },
+            //点击高亮内容
+            clickHighlight: function(elm){
+                //事件停止传递
+                event.stopPropagation();
+                
+                this.postMessage(this.getRectForSelectedText(elm));
+            },
+            //向客户端发送消息
+            postMessage: function(data){
+                window.webkit.messageHandlers.__reader__.postMessage(data);
             }
         }
     });

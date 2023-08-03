@@ -29,6 +29,7 @@ class ReadWebView: LAWebView {
     
     init() {
         let config = WebConfig()
+        super.init(config: config)
         let jsString = """
             var meta = document.createElement('meta');
             meta.setAttribute('name', 'viewport');
@@ -37,7 +38,8 @@ class ReadWebView: LAWebView {
         """
         config.addUserScript(script: jsString, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
         config.dataDetectorTypes = .all
-        super.init(config: config)
+        config.addScriptMessageHandler(self, name: "__reader__")
+        
         
         let menuItem = UIMenuItem(title: "高亮", action: #selector(highlight(_:)))
         UIMenuController.shared.menuItems = [menuItem]
@@ -52,6 +54,12 @@ class ReadWebView: LAWebView {
         evaluateJavaScript("window.__reader__.highlightString('highlight-pink')") { result, error in
             debugPrint(result,error)
         }
+    }
+}
+
+extension ReadWebView: WKScriptMessageHandler {
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        debugPrint(message.name,message.body)
     }
 }
 
