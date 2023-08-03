@@ -147,6 +147,8 @@ extension ReaderCenter: UIPageViewControllerDataSource {
             return nil
         }
         debugPrint("下一页")
+        
+        ReadSpeaker().allSpeakVoices()
         return readPages[2]
         
     }

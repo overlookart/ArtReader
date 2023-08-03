@@ -11,6 +11,8 @@
             fontSizes:['textSizeOne','textSizeTwo','textSizeThree','textSizeFour','textSizeFive'],
             //翻页模式 Class 集合
             pagedModes:['pagedMode-N','pagedMode-H','pagedMode-V'],
+            //高亮样式 Class 集合
+            highlights:['highlight-yellow','highlight-green','highlight-blue','highlight-pink','highlight-underline'],
             //字体大小
             fontSize: 0,
             //翻页模式

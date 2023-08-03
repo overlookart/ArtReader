@@ -45,6 +45,7 @@
 		E93FCDE42A6117940095BEC0 /* Toc.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93FCDE32A6117940095BEC0 /* Toc.swift */; };
 		E9C94BA72A721FA7001BD449 /* Bridge.js in Resources */ = {isa = PBXBuildFile; fileRef = E9C94BA62A721FA7001BD449 /* Bridge.js */; };
 		E9C94BA92A723EE9001BD449 /* Reader.js in Resources */ = {isa = PBXBuildFile; fileRef = E9C94BA82A723EE9001BD449 /* Reader.js */; };
+		E9C94BAD2A7B93DE001BD449 /* ReadSpeaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C94BAC2A7B93DE001BD449 /* ReadSpeaker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +113,7 @@
 		E93FCDE32A6117940095BEC0 /* Toc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toc.swift; sourceTree = "<group>"; };
 		E9C94BA62A721FA7001BD449 /* Bridge.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Bridge.js; sourceTree = "<group>"; };
 		E9C94BA82A723EE9001BD449 /* Reader.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Reader.js; sourceTree = "<group>"; };
+		E9C94BAC2A7B93DE001BD449 /* ReadSpeaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadSpeaker.swift; sourceTree = "<group>"; };
 		F877E566C7C5A84B958939C0 /* Pods-ArtReader-ArtReaderUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtReader-ArtReaderUITests.release.xcconfig"; path = "Target Support Files/Pods-ArtReader-ArtReaderUITests/Pods-ArtReader-ArtReaderUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -243,6 +245,7 @@
 				28FCF8DC2A6BE248008926EC /* ReadPageVC.swift */,
 				E9C94BA82A723EE9001BD449 /* Reader.js */,
 				285ADCCA2A774A42005F48BD /* ReadWebView.swift */,
+				E9C94BAC2A7B93DE001BD449 /* ReadSpeaker.swift */,
 			);
 			path = Reader;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 				28FCF8D92A6AF4A0008926EC /* RCToolBar.swift in Sources */,
 				28FCF8592A58D973008926EC /* ViewController.swift in Sources */,
 				28FCF8672A58E62F008926EC /* EBookModel.swift in Sources */,
+				E9C94BAD2A7B93DE001BD449 /* ReadSpeaker.swift in Sources */,
 				28FCF8692A604D2A008926EC /* Parser.swift in Sources */,
 				E93FCDDB2A60E1070095BEC0 /* Metadata.swift in Sources */,
 				E93FCDD72A6009ED0095BEC0 /* FileManager_Extension.swift in Sources */,
