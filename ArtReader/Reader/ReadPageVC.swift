@@ -31,10 +31,6 @@ class ReadPageVC: UIViewController {
             debugPrint(error)
         }
         
-//        webView.scrollView.isPagingEnabled = true
-        
-        webView.scrollView.isPagingEnabled = true
-        
         
         webView.navigationDelegates = (DecidePolicyNavigationAction:{ action in
             return WKNavigationActionPolicy.allow

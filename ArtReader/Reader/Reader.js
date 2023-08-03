@@ -8,9 +8,13 @@
         value:{
             enableNight: true,
             //字体大小 Class 集合
-            fontSizeClasses:['textSizeOne','textSizeTwo','textSizeThree','textSizeFour','textSizeFive'],
-            
+            fontSizes:['textSizeOne','textSizeTwo','textSizeThree','textSizeFour','textSizeFive'],
+            //翻页模式 Class 集合
+            pagedModes:['pagedMode-N','pagedMode-H','pagedMode-V'],
+            //字体大小
             fontSize: 0,
+            //翻页模式
+            pagedMode: 0,
             //切换夜间模式
             toggleNightMode: function(){
                 this.enableNight = !this.enableNight;
@@ -21,6 +25,11 @@
             changeFontSize: function(size){
                 this.fontSize = size;
                 this.updateFontSize();
+            },
+            //更改翻页模式
+            changePagedMode: function(mode){
+                this.pagedMode = mode;
+                this.updatePagedMode();
             },
             //Element 是否有 Class
             hasClass: function(ele,cls) {
@@ -62,14 +71,22 @@
             
             //更新字体大小
             updateFontSize: function () {
-                let fontSizeClass = this.fontSizeClasses[this.fontSize];
+                let fontSizeClass = this.fontSizes[this.fontSize];
                 var elm = document.documentElement;
-                this.fontSizeClasses.forEach(item => {
+                this.fontSizes.forEach(item => {
                     this.removeClass(elm, item);
-                })
+                });
                 this.addClass(elm, fontSizeClass);
             },
-            
+            //更新翻页模式
+            updatePagedMode: function(){
+                let pagedModeClass = this.pagedModes[this.pagedMode];
+                var elm = document.documentElement;
+                this.pagedModes.forEach(item => {
+                    this.removeClass(elm, item);
+                });
+                this.addClass(elm, pagedModeClass);
+            },
             highlightString: function (style) {
                 var range = window.getSelection().getRangeAt(0);
                 var startOffset = range.startOffset;
@@ -88,10 +105,9 @@
                 params.push({id: id, rect: this.getRectForSelectedText(elm), startOffset: startOffset.toString(), endOffset: endOffset.toString()});
                 return JSON.stringify(params);
             },
-
+            //获取选中内容的矩形位置
             getRectForSelectedText: function (elm) {
                 if (typeof elm === "undefined") elm = window.getSelection().getRangeAt(0);
-    
                 var rect = elm.getBoundingClientRect();
                 return "{{" + rect.left + "," + rect.top + "}, {" + rect.width + "," + rect.height + "}}";
             }
@@ -100,4 +116,5 @@
 
     __reader__.updateNightMode();
     __reader__.updateFontSize();
+    __reader__.updatePagedMode();
 }();

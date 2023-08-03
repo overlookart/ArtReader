@@ -31,10 +31,8 @@ html {
 }
 
 body {
-    padding: 40px 20px !important;
-/*    overflow: hidden !important;*/
-    overflow: -webkit-paged-y !important;
-    direction: ttb !important;
+    padding: 0px !important;
+    margin: 0px !important;
 }
 
 * {
@@ -286,3 +284,20 @@ p, span, div {
         hyphens: none !important;
     }
 }
+
+/*-----------------------翻页模式---------------------------*/
+/* 无翻页模式 */
+html.pagedMode-N, html.pagedMode-N body {
+    
+}
+/* 水平翻页模式 */
+html.pagedMode-H, html.pagedMode-H body {
+    overflow: -webkit-paged-x !important;
+    direction: ltr !important;
+}
+/* 垂直翻页模式 */
+html.pagedMode-V, html.pagedMode-V body {
+    overflow: -webkit-paged-y !important;
+    direction: ttb !important;
+}
+
