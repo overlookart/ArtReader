@@ -17,7 +17,8 @@ class ReadPageVC: UIViewController {
 //    let lab = UITextView(frame: .zero)
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        overrideUserInterfaceStyle = .dark
+        view.backgroundColor = .systemBackground
         // Do any additional setup after loading the view.
         view.addSubview(webView)
         webView.snp.makeConstraints { make in

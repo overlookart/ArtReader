@@ -18,8 +18,6 @@ class ReaderCenter: UIViewController {
     var readPages: [ReadPageVC] = [ReadPageVC(), ReadPageVC(), ReadPageVC()]
     var pendingVC: ReadPageVC?
     var dataSource: [Spine.SpineItem] = []
-    /// 上一次的下标
-    var previouIndex: Int = 0
     /// 当前的下标
     var currentIndex: Int = 0
     override func viewDidLoad() {
@@ -58,15 +56,11 @@ class ReaderCenter: UIViewController {
         guard let book = epubBook else { return }
         dataSource = book.spines
         readPages[0].spine = currentIndex - 1 < 0 ? nil : dataSource[currentIndex-1]
-        readPages[0].title = "0"
         readPages[0].baseURL = baseURL
         readPages[1].spine = dataSource[currentIndex]
-        readPages[1].title = "1"
         readPages[1].baseURL = baseURL
         readPages[2].spine = currentIndex + 1 > dataSource.count-1 ? nil : dataSource[currentIndex+1]
-        readPages[2].title = "2"
         readPages[2].baseURL = baseURL
-        debugPrint("abc")
     }
     
     private func index(OfPage page: ReadPageVC) -> Int? {
@@ -102,21 +96,17 @@ extension ReaderCenter: UIPageViewControllerDelegate{
     func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
         if let vc = pendingViewControllers.first as? ReadPageVC {
             pendingVC = vc
-            debugPrint("开始翻页", vc.title, readPages.firstIndex(of: vc))
+            debugPrint("开始翻页", readPages.firstIndex(of: vc))
         }
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if !completed { return }
-        if let vc = pendingVC, let i = readPages.firstIndex(of: vc) {
-            
-            
+        if let vc = pendingVC {
             if let index = index(OfPage: vc) {
                 currentIndex = index
                 debugPrint("结束翻页", finished, completed, vc.title, currentIndex)
-//                if currentIndex != previouIndex {
-                    setupPageData(currentPage: vc)
-//                }
+                setupPageData(currentPage: vc)
             }
         }
     }
@@ -147,10 +137,7 @@ extension ReaderCenter: UIPageViewControllerDataSource {
             return nil
         }
         debugPrint("下一页")
-        
-        ReadSpeaker().allSpeakVoices()
         return readPages[2]
-        
     }
     
     func presentationCount(for pageViewController: UIPageViewController) -> Int {

@@ -15,6 +15,13 @@ class ReadSpeaker: NSObject {
         let utterance = AVSpeechUtterance(string: str)
         
         // 设置声音
+        /**
+         "Li-mu" "zh-CN" "com.apple.ttsbundle.siri_Li-mu_zh-CN_compact"
+         "Tian-Tian" "zh-CN" "com.apple.ttsbundle.Ting-Ting-compact"
+         "Yu-shu" "zh-CN" "com.apple.ttsbundle.siri_Yu-shu_zh-CN_compact"
+         "Sin-Ji" "zh-HK" "com.apple.ttsbundle.Sin-Ji-compact"
+         "Mei-Jia" "zh-TW" "com.apple.ttsbundle.Mei-Jia-compact"
+         */
         utterance.voice = AVSpeechSynthesisVoice(language: "zh-CN")
 
         // 设置语速（0.0 - 1.0）
@@ -49,7 +56,7 @@ class ReadSpeaker: NSObject {
     func allSpeakVoices(){
         let voices = AVSpeechSynthesisVoice.speechVoices()
         for item in voices {
-            debugPrint(item.name, item.language)
+            debugPrint(item.name, item.language, item.identifier)
         }
     }
 }

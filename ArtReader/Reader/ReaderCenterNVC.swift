@@ -15,6 +15,7 @@ class ReaderCenterNVC: UINavigationController {
         // Do any additional setup after loading the view.
         self.setNavigationBarHidden(true, animated: true)
         self.setToolbarHidden(true, animated: true)
+        overrideUserInterfaceStyle = .dark
     }
     
     init() {
@@ -34,6 +35,13 @@ class ReaderCenterNVC: UINavigationController {
             readerCenter.setToolbarItems([toolbar.backBtnItem], animated: false)
             setToolbarHidden(false, animated: false)
         }
+        UIColor { traitCollection in
+            if traitCollection.userInterfaceStyle == .dark {
+                return .white
+            }else{
+                return .black
+            }
+        }
         self.hidesBarsOnTap = true
         self.hidesBarsOnSwipe = true
         self.barHideOnTapGestureRecognizer.addTarget(self, action: #selector(barHideOnTap))
@@ -52,5 +60,12 @@ class ReaderCenterNVC: UINavigationController {
     @objc private func barHideOnTap(){
         debugPrint("barHideOnTap")
     }
-
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            
+        }
+    }
+    
 }
