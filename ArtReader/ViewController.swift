@@ -13,6 +13,13 @@ class ViewController: UIViewController {
     let parser = Parser()
     let reader = Reader()
     var bookFileUrl: URL?
+    @IBOutlet var mainCollectionView: UICollectionView!{
+        didSet{
+            mainCollectionView.dataSource = self
+            mainCollectionView.delegate = self
+            mainCollectionView.register(BookCell.self, forCellWithReuseIdentifier: "BookCell")
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -42,6 +49,40 @@ class ViewController: UIViewController {
         guard let url = bookFileUrl else { return }
         reader.openBook(vc: self, book: EpubBook(parserData: parser.parserData), fileUrl: url)
     }
+}
+
+extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookCell", for: indexPath)
+        cell.contentView.backgroundColor = .orange
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let screenWidth = UIScreen.main.bounds.width
+        let screenHeight = UIScreen.main.bounds.height
+        var width = (screenWidth - (3 * 5)) / 4.0
+        if screenHeight < screenWidth {
+            width = (screenHeight - (3 * 5)) / 4.0
+        }
+        
+        let height = width * 4 / 3.0
+        return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 5
+    }
+    
 }
 
 extension ViewController: ParserDelegate {

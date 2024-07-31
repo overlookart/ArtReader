@@ -20,7 +20,6 @@ target 'ArtReader' do
   pod 'SwiftSoup'
   pod 'LAWebView', '~> 0.1.0'
   pod 'SnapKit', '~> 5.0.0'
-  pod 'ZMarkupParser', '~> 1.4.0'
   target 'ArtReaderTests' do
     inherit! :search_paths
     # Pods for testing

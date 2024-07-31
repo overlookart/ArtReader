@@ -13,7 +13,7 @@ class ReaderCenter: UIViewController {
     var epubBook: EpubBook?
     var baseURL: URL?
     
-    let pageVC: UIPageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .vertical)
+    let pageVC: UIPageViewController = UIPageViewController(transitionStyle: .pageCurl, navigationOrientation: .horizontal)
     
     var readPages: [ReadPageVC] = [ReadPageVC(), ReadPageVC(), ReadPageVC()]
     var pendingVC: ReadPageVC?
