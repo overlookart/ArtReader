@@ -8,11 +8,12 @@
 import UIKit
 import SSZipArchive
 class ViewController: UIViewController {
-    let bookName = "小说现代中国"
     let unpacker = Unpacker()
     let parser = Parser()
     let reader = Reader()
     var bookFileUrl: URL?
+    
+    
     @IBOutlet var mainCollectionView: UICollectionView!{
         didSet{
             mainCollectionView.dataSource = self
@@ -20,32 +21,38 @@ class ViewController: UIViewController {
             mainCollectionView.register(BookCell.self, forCellWithReuseIdentifier: "BookCell")
         }
     }
+    
+    private var dataSource: [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         parser.delegate = self
-        
+        dataSource = FileManager.default.findResourceFile(ExtendName: "epub")
     }
     
-    @IBAction func unEpubPackAction(_ sender: Any) {
-        if let url = Bundle.main.url(forResource: bookName, withExtension: "epub") {
+    func unEpubPack(filePath: String) {
+        if let path = Bundle.main.path(forResource: filePath, ofType: nil) {
+            let fileName = filePath.replacingOccurrences(of: ".epub", with: "")
             guard let appDocumentUrl = FileManager.default.documentsURL else { return }
-            let bookDocumentUrl = appDocumentUrl.appendingPathComponent(bookName)
+            let bookDocumentUrl = appDocumentUrl.appendingPathComponent(fileName)
             let unpacker = Unpacker()
             
-            if unpacker.unPackage(epubFileURL: url, unPackageURL: bookDocumentUrl) {
+            if unpacker.unPackage(epubFileURL: URL(string: path)!, unPackageURL: bookDocumentUrl) {
                 bookFileUrl = bookDocumentUrl
+                parserEpubFile()
             }
         }
     }
     
-    @IBAction func parserEpubFileAction(_ sender: Any) {
+    func parserEpubFile() {
         guard let url = bookFileUrl else { return }
         parser.parseEpub(epubUrl: url)
+        readEpubBook()
     }
     
-    @IBAction func readEpubBookAction(_ sender: Any) {
+    func readEpubBook() {
         guard let url = bookFileUrl else { return }
         reader.openBook(vc: self, book: EpubBook(parserData: parser.parserData), fileUrl: url)
     }
@@ -53,12 +60,14 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return dataSource.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookCell", for: indexPath)
-        cell.contentView.backgroundColor = .orange
+        if let c = cell as? BookCell {
+            c.setupData(data: dataSource[indexPath.item])
+        }
         return cell
     }
     
@@ -83,6 +92,11 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
         return 5
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let filePath = dataSource[indexPath.item]
+        unEpubPack(filePath: filePath)
+    }
+    
 }
 
 extension ViewController: ParserDelegate {
@@ -105,7 +119,7 @@ extension ViewController: ParserDelegate {
     func endedParserEpub() {
         
         let ebook = EpubBook(parserData: parser.parserData)
-        debugPrint("解析 epub 完成", ebook)
+        debugPrint("解析 epub 完成", ebook.cssStyles)
     }
     
     func errorParserEpub(error: ParserError) {

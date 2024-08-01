@@ -35,6 +35,9 @@
 		2E1EE72063E9208108A05B66 /* Pods_ArtReader_ArtReaderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5BA35063646E1CF63337975 /* Pods_ArtReader_ArtReaderUITests.framework */; };
 		66D92F50469F74D2F70ACF8E /* Pods_ArtReaderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8002DF44A26F19A5F11A15F8 /* Pods_ArtReaderTests.framework */; };
 		E93E355C2C59D23400856528 /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93E355B2C59D23400856528 /* BookCell.swift */; };
+		E93E355F2C5B379D00856528 /* ReadHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93E355E2C5B379D00856528 /* ReadHelper.swift */; };
+		E93E35612C5B6C8300856528 /* String_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93E35602C5B6C8300856528 /* String_Extension.swift */; };
+		E93E35632C5B8E4C00856528 /* ReadTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93E35622C5B8E4C00856528 /* ReadTextView.swift */; };
 		E93FCDD32A6004D80095BEC0 /* Reader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93FCDD02A6004D80095BEC0 /* Reader.swift */; };
 		E93FCDD42A6004D80095BEC0 /* Unpacker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93FCDD22A6004D80095BEC0 /* Unpacker.swift */; };
 		E93FCDD72A6009ED0095BEC0 /* FileManager_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93FCDD62A6009ED0095BEC0 /* FileManager_Extension.swift */; };
@@ -104,6 +107,9 @@
 		DBAA7446E8CBB540A7326554 /* Pods-ArtReader-ArtReaderUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtReader-ArtReaderUITests.debug.xcconfig"; path = "Target Support Files/Pods-ArtReader-ArtReaderUITests/Pods-ArtReader-ArtReaderUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E6DFABC4194741AA5678E03D /* Pods-ArtReaderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtReaderTests.release.xcconfig"; path = "Target Support Files/Pods-ArtReaderTests/Pods-ArtReaderTests.release.xcconfig"; sourceTree = "<group>"; };
 		E93E355B2C59D23400856528 /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
+		E93E355E2C5B379D00856528 /* ReadHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadHelper.swift; sourceTree = "<group>"; };
+		E93E35602C5B6C8300856528 /* String_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String_Extension.swift; sourceTree = "<group>"; };
+		E93E35622C5B8E4C00856528 /* ReadTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadTextView.swift; sourceTree = "<group>"; };
 		E93FCDD02A6004D80095BEC0 /* Reader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reader.swift; sourceTree = "<group>"; };
 		E93FCDD22A6004D80095BEC0 /* Unpacker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unpacker.swift; sourceTree = "<group>"; };
 		E93FCDD62A6009ED0095BEC0 /* FileManager_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager_Extension.swift; sourceTree = "<group>"; };
@@ -189,6 +195,7 @@
 		28FCF84F2A58D973008926EC /* ArtReader */ = {
 			isa = PBXGroup;
 			children = (
+				E93E355D2C5B376900856528 /* ReadHelp */,
 				E93FCDD52A6009ED0095BEC0 /* Extension */,
 				E93FCDD12A6004D80095BEC0 /* Parser */,
 				E93FCDCF2A6004D80095BEC0 /* Reader */,
@@ -234,6 +241,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E93E355D2C5B376900856528 /* ReadHelp */ = {
+			isa = PBXGroup;
+			children = (
+				E93E355E2C5B379D00856528 /* ReadHelper.swift */,
+			);
+			path = ReadHelp;
+			sourceTree = "<group>";
+		};
 		E93FCDCF2A6004D80095BEC0 /* Reader */ = {
 			isa = PBXGroup;
 			children = (
@@ -249,6 +264,7 @@
 				E9C94BA82A723EE9001BD449 /* Reader.js */,
 				285ADCCA2A774A42005F48BD /* ReadWebView.swift */,
 				E9C94BAC2A7B93DE001BD449 /* ReadSpeaker.swift */,
+				E93E35622C5B8E4C00856528 /* ReadTextView.swift */,
 			);
 			path = Reader;
 			sourceTree = "<group>";
@@ -274,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				E93FCDD62A6009ED0095BEC0 /* FileManager_Extension.swift */,
+				E93E35602C5B6C8300856528 /* String_Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -539,10 +556,12 @@
 				E93FCDD32A6004D80095BEC0 /* Reader.swift in Sources */,
 				28FCF8DD2A6BE248008926EC /* ReadPageVC.swift in Sources */,
 				28FCF86B2A605051008926EC /* ParserData.swift in Sources */,
+				E93E35612C5B6C8300856528 /* String_Extension.swift in Sources */,
 				E93E355C2C59D23400856528 /* BookCell.swift in Sources */,
 				28FCF85D2A58D973008926EC /* AppDelegate.swift in Sources */,
 				E93FCDE12A60F48E0095BEC0 /* Guide.swift in Sources */,
 				28FCF8712A626481008926EC /* EpubBook.swift in Sources */,
+				E93E35632C5B8E4C00856528 /* ReadTextView.swift in Sources */,
 				28FCF8D72A6AF3E2008926EC /* RCNavigationBar.swift in Sources */,
 				E93FCDDD2A60E57E0095BEC0 /* Resource.swift in Sources */,
 				28FCF8D92A6AF4A0008926EC /* RCToolBar.swift in Sources */,
@@ -552,6 +571,7 @@
 				28FCF8692A604D2A008926EC /* Parser.swift in Sources */,
 				E93FCDDB2A60E1070095BEC0 /* Metadata.swift in Sources */,
 				E93FCDD72A6009ED0095BEC0 /* FileManager_Extension.swift in Sources */,
+				E93E355F2C5B379D00856528 /* ReadHelper.swift in Sources */,
 				28FCF8732A62FC75008926EC /* ReaderCenter.swift in Sources */,
 				28FCF8652A58E5BA008926EC /* BookModel.swift in Sources */,
 				285ADCCB2A774A42005F48BD /* ReadWebView.swift in Sources */,

@@ -60,4 +60,15 @@ extension FileManager {
         }
         return isSuccess
     }
+    
+    public func findResourceFile(ExtendName extendName: String) -> [String] {
+        var findFiles: [String] = []
+        if let resourcePath = Bundle.main.resourcePath {
+            let files = try? contentsOfDirectory(atPath: resourcePath)
+            if let f = files?.filter({ $0.hasSuffix(extendName)}) {
+                findFiles = f
+            }
+        }
+        return findFiles
+    }
 }

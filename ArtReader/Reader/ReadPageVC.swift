@@ -12,21 +12,36 @@ class ReadPageVC: UIViewController {
     let webView: ReadWebView = ReadWebView()
     var spine: Spine.SpineItem?
     var baseURL: URL?
-//    let parser = ZHTMLParserBuilder.initWithDefault().build()
-//    let lab = UITextView(frame: .zero)
+    var cssResourse:[Resource] = []
+    var isTest: Bool = false {
+        didSet{
+            textView.isHidden = !isTest
+        }
+    }
+    lazy var textView: UITextView = {
+        let view = UITextView(frame: .zero)
+        view.backgroundColor = .white
+        view.isEditable = false
+        view.isHidden = true
+        return view
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .dark
         view.backgroundColor = .systemBackground
         // Do any additional setup after loading the view.
+        
         view.addSubview(webView)
         webView.snp.makeConstraints { make in
+            make.edges.equalTo(self.view.safeAreaLayoutGuide.snp.edges)
+        }
+        view.addSubview(textView)
+        textView.snp.makeConstraints { make in
             make.edges.equalTo(self.view.safeAreaLayoutGuide.snp.edges)
         }
         
         do {
             try webView.configuration.addUserScript(fileName: "Reader", injectionTime: .atDocumentStart, forMainFrameOnly: true)
-//            try webView.configuration.addUserScript(fileName: "Bridge", injectionTime: .atDocumentStart, forMainFrameOnly: true)
         } catch  {
             debugPrint(error)
         }
@@ -85,15 +100,32 @@ class ReadPageVC: UIViewController {
     
     public func loadContent(){
         guard let href = spine?.resource.href, let url = baseURL?.appendingPathComponent(href) else { return }
-        guard let htmlStr = try? String(data: Data(contentsOf: url), encoding: .utf8) else { return }
+        guard var htmlStr = try? String(contentsOfFile: url.path, encoding: .utf8) else { return }
         
-        let cssFilePath = Bundle.main.path(forResource: "Style", ofType: "css")
-        let cssTag = "<link rel=\"stylesheet\" type=\"text/css\" href=\"\(cssFilePath!)\">"
-        let toInject = "\n\(cssTag)\n</head>"
-        var html = htmlStr.replacingOccurrences(of: "</head>", with: toInject)
-//        html = html.replacingOccurrences(of: "<html ", with: "<html class=\"andada textSizeFive\"")
-        webView.loadHTMLString(html, baseURL: URL(fileURLWithPath: url.deletingLastPathComponent().path))
-        
+        if let cssFilePath = Bundle.main.path(forResource: "Style", ofType: "css") {
+            if let style = try? String(contentsOfFile: cssFilePath, encoding: .utf8) {
+                let styleTag = "<style>\(style)</style>"
+                htmlStr = htmlStr.replacingOccurrences(of: "</head>", with: styleTag)
+            }
+//            let cssTag = "<link rel=\"stylesheet\" type=\"text/css\" href=\"\(cssFilePath)\">"
+//            let toInject = "\n\(cssTag)\n</head>"
+        }
+        if let url = baseURL, let html = spine?.resource {
+            if var html = ReadHelper.merge(baseUrl: url, html: html, css: cssResourse) {
+                if let cssFilePath = Bundle.main.path(forResource: "Style", ofType: "css") {
+                    if let style = try? String(contentsOfFile: cssFilePath, encoding: .utf8) {
+                        let styleTag = "<style>\(style)</style></head>"
+                        html = html.replacingOccurrences(of: "</head>", with: styleTag)
+                    }
+                }
+                if let attrStr = ReadHelper.convert(htmlStr: html) {
+                    
+                    textView.attributedText = ReadHelper.attachment(attrStr: attrStr)
+                }
+               
+            }
+        }
+        webView.loadHTMLString(htmlStr, baseURL: URL(fileURLWithPath: url.deletingLastPathComponent().path))
     }
     
     func navigationResponse(response: URLResponse){

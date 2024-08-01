@@ -34,6 +34,8 @@ struct EpubBook {
     /// 书脊
     var spines: [Spine.SpineItem] = []
     
+    var cssStyles: [Resource]?
+    
     struct Chapter {
         /// 章节标题
         var title: String = ""
@@ -80,7 +82,7 @@ struct EpubBook {
             chapters = setupChapters(navItems: tocs, spines: spines)
         }
         
-        
+        cssStyles = parserData.content?.manifest?.filter({ $0.mediaType == .css })
     }
     
     /// 配置章节数据

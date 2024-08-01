@@ -20,6 +20,18 @@ class ReaderCenter: UIViewController {
     var dataSource: [Spine.SpineItem] = []
     /// 当前的下标
     var currentIndex: Int = 0
+    
+    lazy var closeItem: UIBarButtonItem = {
+        let item = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeAction))
+        return item
+    }()
+    
+    lazy var testText: UIBarButtonItem = {
+        let item = UIBarButtonItem(image: UIImage(systemName: "smallcircle.circle"), style: .done, target: self, action: #selector(testTextAction))
+        return item
+    }()
+    
+    private var test: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -29,6 +41,7 @@ class ReaderCenter: UIViewController {
         pageVC.delegate = self
         pageVC.dataSource = self
         self.navigationController?.hidesBarsOnTap = true
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
         pageVC.setViewControllers([readPages[1]], direction: .forward, animated: true)
         
     }
@@ -45,6 +58,7 @@ class ReaderCenter: UIViewController {
     */
 
     private func setupUI(){
+        navigationItem.rightBarButtonItems = [closeItem, testText]
         self.addChild(pageVC)
         view.addSubview(pageVC.view)
         pageVC.view.snp.makeConstraints { make in
@@ -54,6 +68,7 @@ class ReaderCenter: UIViewController {
     
     private func setupData(){
         guard let book = epubBook else { return }
+        
         dataSource = book.spines
         readPages[0].spine = currentIndex - 1 < 0 ? nil : dataSource[currentIndex-1]
         readPages[0].baseURL = baseURL
@@ -61,6 +76,11 @@ class ReaderCenter: UIViewController {
         readPages[1].baseURL = baseURL
         readPages[2].spine = currentIndex + 1 > dataSource.count-1 ? nil : dataSource[currentIndex+1]
         readPages[2].baseURL = baseURL
+        if let cssStyles = book.cssStyles {
+            readPages[0].cssResourse = cssStyles
+            readPages[1].cssResourse = cssStyles
+            readPages[2].cssResourse = cssStyles
+        }
     }
     
     private func index(OfPage page: ReadPageVC) -> Int? {
@@ -85,6 +105,16 @@ class ReaderCenter: UIViewController {
         }
     }
     
+    @objc func closeAction(){
+        dismiss(animated: true)
+    }
+    
+    @objc func testTextAction(){
+        test = !test
+        for page in readPages {
+            page.isTest = test
+        }
+    }
 }
 
 
