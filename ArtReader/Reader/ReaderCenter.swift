@@ -40,7 +40,6 @@ class ReaderCenter: UIViewController {
         setupData()
         pageVC.delegate = self
         pageVC.dataSource = self
-        self.navigationController?.hidesBarsOnTap = true
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         pageVC.setViewControllers([readPages[1]], direction: .forward, animated: true)
         

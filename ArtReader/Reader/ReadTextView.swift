@@ -18,6 +18,8 @@ class ReadTextView: UITextView {
     */
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
+//        self.textContainer.maximumNumberOfLines = 3
+//        self.textContainer.lineBreakMode = .byTruncatingTail
     }
     
     required init?(coder: NSCoder) {

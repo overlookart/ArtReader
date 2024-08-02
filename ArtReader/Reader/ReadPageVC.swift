@@ -18,8 +18,8 @@ class ReadPageVC: UIViewController {
             textView.isHidden = !isTest
         }
     }
-    lazy var textView: UITextView = {
-        let view = UITextView(frame: .zero)
+    lazy var textView: ReadTextView = {
+        let view = ReadTextView(frame: .zero)
         view.backgroundColor = .white
         view.isEditable = false
         view.isHidden = true
@@ -118,6 +118,9 @@ class ReadPageVC: UIViewController {
                         html = html.replacingOccurrences(of: "</head>", with: styleTag)
                     }
                 }
+                html = html.replacingOccurrences(of: "<image", with: "<img")
+                html = html.replacingOccurrences(of: "image>", with: "img>")
+                debugPrint(html)
                 if let attrStr = ReadHelper.convert(htmlStr: html) {
                     
                     textView.attributedText = ReadHelper.attachment(attrStr: attrStr)

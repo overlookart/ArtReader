@@ -42,8 +42,8 @@ class ReaderCenterNVC: UINavigationController {
                 return .black
             }
         }
-        self.hidesBarsOnTap = true
-        self.hidesBarsOnSwipe = true
+        self.hidesBarsOnTap = false
+        self.hidesBarsOnSwipe = false
         self.barHideOnTapGestureRecognizer.addTarget(self, action: #selector(barHideOnTap))
     }
     
