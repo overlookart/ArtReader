@@ -8,6 +8,7 @@
 import UIKit
 import LAWebView
 import WebKit
+import DTCoreText
 class ReadPageVC: UIViewController {
     let webView: ReadWebView = ReadWebView()
     var spine: Spine.SpineItem?
@@ -18,11 +19,12 @@ class ReadPageVC: UIViewController {
             textView.isHidden = !isTest
         }
     }
-    lazy var textView: ReadTextView = {
-        let view = ReadTextView(frame: .zero)
+    lazy var textView: DTAttributedTextView = {
+        let view = DTAttributedTextView(frame: .zero)
         view.backgroundColor = .white
-        view.isEditable = false
-        view.isHidden = true
+        view.textDelegate = self
+//        view.isEditable = false
+        view.isHidden = false
         return view
     }()
     override func viewDidLoad() {
@@ -122,8 +124,9 @@ class ReadPageVC: UIViewController {
                 html = html.replacingOccurrences(of: "image>", with: "img>")
                 debugPrint(html)
                 if let attrStr = ReadHelper.convert(htmlStr: html) {
+                    textView.attributedString = attrStr
                     
-                    textView.attributedText = ReadHelper.attachment(attrStr: attrStr)
+//                    textView.attributedText = ReadHelper.attachment(attrStr: attrStr)
                 }
                
             }
@@ -139,4 +142,27 @@ class ReadPageVC: UIViewController {
         }
     }
     
+}
+
+extension ReadPageVC: DTAttributedTextContentViewDelegate {
+    
+    func attributedTextContentView(_ attributedTextContentView: DTAttributedTextContentView!, viewFor attachment: DTTextAttachment!, frame: CGRect) -> UIView! {
+        if let imgAttachment = attachment as? DTImageTextAttachment {
+            if let url = attachment.contentURL {
+                debugPrint("contentURL",url.absoluteString)
+            }
+            
+            if let url = attachment.hyperLinkURL {
+                debugPrint("hyperLinkURL:",url.absoluteString)
+            }
+            let imgView = DTLazyImageView()
+            imgView.contentMode = .scaleAspectFit
+            imgView.bounds = CGRect(origin: .zero, size: attachment.displaySize)
+            imgView.backgroundColor = .orange
+            return imgView
+        }
+        
+        
+        return UIView()
+    }
 }

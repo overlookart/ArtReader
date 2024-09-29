@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import DTCoreText
 struct ReadHelper {
     
     /// 合并 html 和 css
@@ -16,8 +17,9 @@ struct ReadHelper {
     public static func merge(baseUrl: URL, html: Resource, css: [Resource]) -> String? {
         let htmlUrl = baseUrl.appendingPathComponent(html.href)
         guard let htmlStr = try? String(contentsOfFile: htmlUrl.path) else { return nil }
+        debugPrint("----------合并前--------")
         debugPrint(htmlStr)
-        debugPrint("------------------")
+        debugPrint("-----------------------")
         var hs = htmlStr
         for style in css {
             if htmlStr.contains(style.href) {
@@ -30,8 +32,9 @@ struct ReadHelper {
                 }
             }
         }
-        debugPrint("------------------")
+        debugPrint("----------合并后--------")
         debugPrint(hs)
+        debugPrint("-----------------------")
         return hs
     }
     
@@ -42,8 +45,12 @@ struct ReadHelper {
             aStr.addAttributes(attrs, range: NSRange(location: 0, length: aStr.length))
         }
         aStr.removeAttribute(.underlineStyle, range: NSRange(location: 0, length: aStr.length))
+        guard let nStr = NSAttributedString(htmlData: data, documentAttributes: nil) else { return nil }
+        return NSMutableAttributedString(attributedString: nStr)
         return aStr
     }
+    
+    
     
     public static func attachment(attrStr: NSAttributedString) -> NSAttributedString {
         debugPrint("attrStr:",attrStr.string)
