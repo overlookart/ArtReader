@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import DTCoreText
 struct ReadHelper {
     
     /// 合并 html 和 css
@@ -45,8 +44,6 @@ struct ReadHelper {
             aStr.addAttributes(attrs, range: NSRange(location: 0, length: aStr.length))
         }
         aStr.removeAttribute(.underlineStyle, range: NSRange(location: 0, length: aStr.length))
-        guard let nStr = NSAttributedString(htmlData: data, documentAttributes: nil) else { return nil }
-        return NSMutableAttributedString(attributedString: nStr)
         return aStr
     }
     
